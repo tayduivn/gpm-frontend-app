@@ -12,7 +12,7 @@ import {UtilsService} from '../../services/utils.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users: ModelUser;
+  users: [ModelUser];
   message = 'Loading...';
 
   constructor(

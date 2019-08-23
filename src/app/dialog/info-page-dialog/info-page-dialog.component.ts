@@ -18,6 +18,7 @@ export class InfoPageDialogComponent implements OnInit {
   public formImageData: FormGroup;
   public modalType: string;
   public infoPage: ModelInfoPage;
+  public references = ['Home', 'About', 'Membership'];
   private formData = new FormData();
   private fileToUpload = [];
 
@@ -37,13 +38,9 @@ export class InfoPageDialogComponent implements OnInit {
     if (Object.entries(data).length === 0 && data.constructor === Object) {
       this.infoPage = null;
       this.form = this.fb.group({
-        name: ['', [Validators.required]],
-        description_short: ['', [Validators.required]],
-        description_one: ['', [Validators.required]],
-        description_two: ['', [Validators.required]],
-        image: ['', [Validators.required]],
-        regular_price: ['', [Validators.required]],
-        quantity: ['', [Validators.required]],
+        title: ['', [Validators.required]],
+        content: ['', [Validators.required]],
+        reference: ['', [Validators.required]]
       });
     } else {
       this.infoPage = data;
@@ -51,13 +48,11 @@ export class InfoPageDialogComponent implements OnInit {
       this.form = this.fb.group({
         title: [this.infoPage.title, [Validators.required]],
         content: [this.infoPage.content, [Validators.required]],
-        reference: [this.infoPage.reference, [Validators.required]],
-        image: [''],
+        reference: [this.infoPage.reference, [Validators.required]]
       });
 
       /* Form image */
       this.formImageData = this.fb.group({values: this.fb.array([])});
-      console.log(this.formImageData.controls.values);
     }
     this.formImage = this.fb.group(({size: ['', [Validators.required]]}));
   }
@@ -69,18 +64,15 @@ export class InfoPageDialogComponent implements OnInit {
     return UtilsService.getError(this.form, controlName);
   }
 
-  public getErrorImage(controlName: string): string {
-    return UtilsService.getError(this.formImage, controlName);
-  }
-
   public save() {
     if (this.infoPage.id !== undefined) {
-      this.infoPageApiService.updateInfoPage(this.form).subscribe(() => {
+      this.form.value.id = this.infoPage.id;
+      this.infoPageApiService.updateInfoPage(this.form.value).subscribe(() => {
         this.snackBar.open('Success', 'ok', {duration: 2000});
         this.dialogRef.close();
       });
     } else {
-      this.infoPageApiService.createInfoPage(this.form).subscribe(() => {
+      this.infoPageApiService.createInfoPage(this.form.value).subscribe(() => {
         this.snackBar.open('Success', 'ok', {duration: 2000});
         this.dialogRef.close();
       });

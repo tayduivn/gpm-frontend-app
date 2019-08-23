@@ -23,6 +23,7 @@ import {
   MatInputModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
+  MatSelectModule,
   MatSnackBarModule
 } from '@angular/material';
 import {AngularFireModule} from '@angular/fire';
@@ -114,6 +115,7 @@ import {InfoPageDialogComponent} from './dialog/info-page-dialog/info-page-dialo
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
     StripeCheckoutModule,
+    MatSelectModule,
     NgxPayPalModule
   ],
   providers: [

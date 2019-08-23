@@ -21,7 +21,6 @@ export class UtilsService {
   static getError(formGroup, controlName: string): string {
     let error = '';
     const control = formGroup.get(controlName);
-    console.log(control);
     if (control.errors !== null) {
       if (control.errors.required === true) {
         error = 'Campo requerido';

@@ -19,7 +19,7 @@ import {ChatComponent} from './chat/chat.component';
 import {AuthClientService} from '../services/auth-client.service';
 import {ChatsComponent} from './chats/chats.component';
 import {TagsComponent} from './tags/tags.component';
-import {InfoPageComponent} from '../client-panel/info-page/info-page.component';
+import {InfoPageComponent} from './info-page/info-page.component';
 
 const routes: Routes = [
   {

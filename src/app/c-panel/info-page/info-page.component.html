@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between mb-3">
     <h3 class="mb-2">List of products</h3>
     <div class="text-right">
-      <button class="btn-sm btn-primary" (click)="openDialog({}, 'products')">Create</button>
+      <button class="btn-sm btn-primary" (click)="openDialog({}, 'info_pages')">Create</button>
     </div>
   </div>
   <table class="table table-striped">
@@ -24,7 +24,7 @@
         <button class="btn btn-sm btn-primary" (click)="openDialog(infoPage, 'images')">Images</button>
       </td>
       <td>
-        <button class="btn btn-sm btn-primary" (click)="openDialog(infoPage, 'infoPages')">Edit</button>
+        <button class="btn btn-sm btn-primary" (click)="openDialog(infoPage, 'info_pages')">Edit</button>
       </td>
       <td>
         <button class="btn btn-sm btn-danger" (click)="deleteProduct(infoPage.id)">

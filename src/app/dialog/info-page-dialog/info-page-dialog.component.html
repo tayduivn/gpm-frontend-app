@@ -1,52 +1,34 @@
 <div [ngSwitch]="modalType">
   <!-- Products -->
-  <div *ngSwitchCase="'products'">
+  <div *ngSwitchCase="'info_pages'">
     <div class="d-flex justify-content-between">
-      <h3 mat-dialog-title>Information of product</h3>
+      <h3 mat-dialog-title>Information of the page</h3>
       <small *ngIf="infoPage.id">Date of creation {{infoPage.inserted_at}}</small>
     </div>
     <mat-dialog-content>
       <form [formGroup]="form">
         <div class="form-group">
           <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="name" formControlName="name" type="text">
-            <mat-error>{{getError('name')}}</mat-error>
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" formControlName="title" type="text">
+            <mat-error>{{getError('title')}}</mat-error>
           </mat-form-field>
         </div>
         <div class="form-group">
           <mat-form-field>
-            <mat-label>Description short</mat-label>
-            <input matInput placeholder="description_short" formControlName="description_short" type="text">
-            <mat-error>{{getError('description_short')}}</mat-error>
+            <mat-label>Content</mat-label>
+            <textarea matInput formControlName="content" cols="10"></textarea>
+            <mat-error>{{getError('content')}}</mat-error>
           </mat-form-field>
         </div>
         <div class="form-group">
           <mat-form-field>
-            <mat-label>Description long one</mat-label>
-            <input matInput placeholder="description_one" formControlName="description_one" type="text">
-            <mat-error>{{getError('description_one')}}</mat-error>
+            <mat-label>Select one page</mat-label>
+            <mat-select formControlName="reference">
+              <mat-option *ngFor="let reference of references" [value]="reference">{{reference}}</mat-option>
+            </mat-select>
+            <mat-error>{{getError('reference')}}</mat-error>
           </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Description long two</mat-label>
-            <input matInput placeholder="description_two" formControlName="description_two" type="text">
-            <mat-error>{{getError('description_two')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="row">
-          <div class="form-group col-md-3 col-6">
-            <label for="regular_price" class="mt-3 mb-3">Price</label>
-            <input class="form-control" id="regular_price" type="text" formControlName="regular_price">
-            <p class="m-0 p-0 text-left">
-              <small>Decimal point to cents</small>
-            </p>
-          </div>
-          <div class="form-group col-md-3 col-6">
-            <label for="quantity" class="mt-3 mb-3">Quantity</label>
-            <input class="form-control" id="quantity" type="text" formControlName="quantity">
-          </div>
         </div>
       </form>
     </mat-dialog-content>
@@ -60,17 +42,10 @@
 
   <!-- Images -->
   <div *ngSwitchCase="'images'">
-    <h3 mat-dialog-title>{{infoPage.name}}</h3>
+    <h3 mat-dialog-title>{{infoPage.title}}</h3>
     <mat-dialog-content>
       <h4>Add image</h4>
       <form [formGroup]="formImage" class="row">
-        <div class="form-group col-md-6">
-          <mat-form-field>
-            <mat-label>Descripción del tamaño</mat-label>
-            <input matInput placeholder="size" formControlName="size" type="text">
-            <mat-error>{{getErrorImage('size')}}</mat-error>
-          </mat-form-field>
-        </div>
         <div class="form-group col-md-6">
           <label>Imagen</label>
           <input id="image-infoPage" type="file" class="form-control" accept="image/*" (change)="uploadImage($event)">
@@ -85,22 +60,14 @@
       <hr>
       <h4>Edit images</h4>
       <form [formGroup]="formImageData">
-        <div formArrayName="values" *ngIf="infoPage.images[0].id_image !== '0'">
-          <div class="p-1"
-               *ngFor="let image of formImageData.get('values')['controls']; let i = index" [formGroupName]="i">
+        <div *ngIf="infoPage.images[0].id_image !== '0'">
+          <div class="p-1" *ngFor="let image of infoPage.images; let i = index">
             <hr class="mb-3">
             <div class="row">
               <div class="image-content col-md-4 col-12">
                 <img [src]="infoPage.images[i].image" [alt]="infoPage.images[i].id_image">
               </div>
               <div class="col-md-8 col-12">
-                <div class="form-group">
-                  <mat-form-field>
-                    <mat-label>Descripción del tamaño</mat-label>
-                    <input matInput placeholder="size" formControlName="size" type="text">
-                    <mat-error>{{getErrorImage('size')}}</mat-error>
-                  </mat-form-field>
-                </div>
                 <div class="form-group">
                   <label>Image</label>
                   <input type="file" class="form-control" accept="image/*" (change)="uploadImage($event)">

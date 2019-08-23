@@ -1,4 +1,6 @@
 export interface ModelUser {
+  user_id?: string;
+  inserted_at?: any;
   firebase_id?: string;
   email_paypal?: string;
   status?: string;
