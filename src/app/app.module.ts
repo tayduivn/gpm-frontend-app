@@ -66,6 +66,7 @@ import {PaymentDialogComponent} from './dialog/payment-dialog/payment-dialog.com
 import {StripeCheckoutModule} from 'ng-stripe-checkout';
 import {MapService} from './services/map.service';
 import {NgxPayPalModule} from 'ngx-paypal';
+import {InfoPageDialogComponent} from './dialog/info-page-dialog/info-page-dialog.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import {NgxPayPalModule} from 'ngx-paypal';
     TagsDialogComponent,
     ForgotDialogComponent,
     LanguageDialogComponent,
+    InfoPageDialogComponent,
     ClientOrderDialogComponent,
     ClientPaymentDialogComponent,
     PaymentDialogComponent,
@@ -157,7 +159,8 @@ import {NgxPayPalModule} from 'ngx-paypal';
     ClientOrderDialogComponent,
     ClientPaymentDialogComponent,
     TagsDialogComponent,
-    PaymentDialogComponent
+    PaymentDialogComponent,
+    InfoPageDialogComponent,
   ]
 })
 

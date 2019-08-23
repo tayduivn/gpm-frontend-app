@@ -33,6 +33,7 @@ import {
 import {ChatsComponent} from './chats/chats.component';
 import {ChatComponent} from './chat/chat.component';
 import {TagsComponent} from './tags/tags.component';
+import {InfoPageComponent} from './info-page/info-page.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {TagsComponent} from './tags/tags.component';
     ChatsComponent,
     ChatComponent,
     TagsComponent,
+    InfoPageComponent,
   ],
   imports: [
     CommonModule,

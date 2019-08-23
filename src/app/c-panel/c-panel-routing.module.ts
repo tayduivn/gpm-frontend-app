@@ -19,6 +19,7 @@ import {ChatComponent} from './chat/chat.component';
 import {AuthClientService} from '../services/auth-client.service';
 import {ChatsComponent} from './chats/chats.component';
 import {TagsComponent} from './tags/tags.component';
+import {InfoPageComponent} from '../client-panel/info-page/info-page.component';
 
 const routes: Routes = [
   {
@@ -137,6 +138,14 @@ const routes: Routes = [
       {
         path: 'reviews',
         component: ReviewsComponent,
+        canActivate: [AuthServiceService],
+        data: {
+          expectedRole: ['admin']
+        },
+      },
+      {
+        path: 'info/page',
+        component: InfoPageComponent,
         canActivate: [AuthServiceService],
         data: {
           expectedRole: ['admin']

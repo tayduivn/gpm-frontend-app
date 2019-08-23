@@ -92,6 +92,16 @@ export class HandleRequestService {
     allPublic: `${config.api_url}/api/public/roles`,
     all: `${config.api_url}/api/roles`,
   };
+  public apiInfoPages = {
+    allPublic: `${config.api_url}/api/public/info/page`,
+    all: `${config.api_url}/api/info/page`,
+  };
+  public apiInfoImages = {
+    all: `${config.api_url}/api/info/images`,
+    register: `${config.api_url}/api/info/images/reg`,
+    update: `${config.api_url}/api/info/images/update`,
+    allPublic: `${config.api_url}/api/public/info/images`,
+  };
 
   // Error handling
   public handleError(error) {
