@@ -1,4 +1,4 @@
-<div *ngIf="products; else noData">
+<div *ngIf="infoPages; else noData">
   <div class="d-flex justify-content-between mb-3">
     <h3 class="mb-2">List of products</h3>
     <div class="text-right">
@@ -17,20 +17,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let product of products; let index = index">
+    <tr *ngFor="let infoPage of infoPages; let index = index">
       <th scope="col">{{index + 1}}</th>
-      <td>{{product.name}}</td>
+      <td>{{infoPage.title}}</td>
       <td>
-        <button class="btn btn-sm btn-primary" (click)="openDialog(product, 'categories')">Categories</button>
+        <button class="btn btn-sm btn-primary" (click)="openDialog(infoPage, 'images')">Images</button>
       </td>
       <td>
-        <button class="btn btn-sm btn-primary" (click)="openDialog(product, 'images')">Images</button>
+        <button class="btn btn-sm btn-primary" (click)="openDialog(infoPage, 'infoPages')">Edit</button>
       </td>
       <td>
-        <button class="btn btn-sm btn-primary" (click)="openDialog(product, 'products')">Edit</button>
-      </td>
-      <td>
-        <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">
+        <button class="btn btn-sm btn-danger" (click)="deleteProduct(infoPage.id)">
           Delete
         </button>
       </td>
@@ -43,7 +40,7 @@
   <div class="d-flex justify-content-between mb-3">
     <h3>{{message}}</h3>
     <div class="text-right">
-      <button mat-raised-button color="primary" (click)="openDialog({}, 'products')">Create</button>
+      <button mat-raised-button color="primary" (click)="openDialog({}, 'infoPages')">Create</button>
     </div>
   </div>
 </ng-template>
