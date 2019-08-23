@@ -1,0 +1,90 @@
+<h2 mat-dialog-title>Information</h2>
+<mat-dialog-content>
+  <div *ngIf="order; else noData">
+    <div class="d-flex justify-content-between align-items-center mt-2">
+      <h3>Detail of the order Nº {{order.order_id}} - {{order.order_status}}</h3>
+      <button *ngIf="order.order_status === 'Sending' || order.order_status === 'Pending'"
+              class="btn btn-sm btn-primary" (click)="editStatusOrder()">
+        Change status to complete
+      </button>
+    </div>
+    <hr>
+    <div class="mt-4">
+      <h5>Data of client</h5>
+      <table class="table table-custom mt-3 mb-4">
+        <tbody>
+        <tr>
+          <td scope="col" width="250px">Email</td>
+          <td>{{order.email}}</td>
+        </tr>
+        <tr>
+          <td scope="col" width="250px">Name of client</td>
+          <td>{{order.first_name}} {{order.last_name}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Address</td>
+          <td>{{order.address}}</td>
+        </tr>
+        <tr>
+          <td scope="col">City</td>
+          <td>{{order.city}}</td>
+        </tr>
+        <tr>
+          <td scope="col">State</td>
+          <td>{{order.state}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Country</td>
+          <td>{{order.country}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Country Code</td>
+          <td>{{order.country_code}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Postal code</td>
+          <td>{{order.postal_code}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Phone</td>
+          <td>{{order.phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <h5>Data of product</h5>
+      <table class="table table-custom mt-3 mb-4 text-center">
+        <tbody>
+        <tr>
+          <th scope="col" width="10px">Nº</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+        </tr>
+        <tr *ngFor="let item of order.products; let index = index">
+          <td>{{index + 1}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.regular_price}}</td>
+          <td>{{item.cart_quantity}}</td>
+          <td>{{item.cart_quantity * item.regular_price}}</td>
+        </tr>
+        <tr>
+          <th scope="col" width="10px"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">{{order.total}}</th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <ng-template #noData>
+    <div class="d-flex justify-content-between mb-3">
+      <h3>{{message}}</h3>
+    </div>
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,9 @@
+:root {
+  --gpm-first: rgb(241, 154, 4);
+  --gpm-second: rgb(6, 134, 74);
+  --gpm-third: rgb(27, 125, 183);
+  --gpm-fourth: rgb(11, 52, 91);
+  --gpm-fith: rgb(10, 108, 75);
+  --color-message: #337670;
+  --color-error: #eb1e32;
+}

@@ -1,0 +1,38 @@
+<div *ngIf="payments; else noData">
+  <div class="d-flex justify-content-between mb-3">
+    <h3 class="mb-2">Payment information</h3>
+  </div>
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label for="stripe_secret_token" class="mt-3 mb-3">Stripe Secret Token</label>
+      <input class="form-control mb-1" id="stripe_secret_token" type="text" formControlName="stripe_secret_token"
+             required>
+      <small class="saved-text d-flex justify-content-between">
+        <label for="prod_stripe"> production token
+          <input type="checkbox" name="prod_stripe" id="prod_stripe" [checked]="payments.production_stripe === '1'"
+                 (change)="sendProduction($event, 'stripe')">
+        </label>
+        <span [class]="isActiveTextOne">Saved</span>
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="paypal_token" class="mt-3 mb-3">Paypal Access Token</label>
+      <input class="form-control mb-1" id="paypal_token" type="text" formControlName="paypal_token" required>
+      <small class="saved-text d-flex justify-content-between">
+        <label for="prod_paypal"> production token
+          <input type="checkbox" name="prod_paypal" id="prod_paypal" [checked]="payments.production_paypal === '1'"
+                 (change)="sendProduction($event, 'paypal')">
+        </label>
+        <span [class]="isActiveTextTwo" (click)="send()">Saved</span>
+      </small>
+    </div>
+    <div class="text-right">
+      <button type="submit" mat-raised-button color="primary" (click)="send()">Save</button>
+    </div>
+  </form>
+</div>
+<ng-template #noData>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>{{message}}</h3>
+  </div>
+</ng-template>

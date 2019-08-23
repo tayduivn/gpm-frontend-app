@@ -1,0 +1,43 @@
+<div *ngIf="orders; else noData">
+  <div class="d-flex justify-content-between">
+    <h3 class="mb-2">List of orders</h3>
+    <div class="form-group">
+      <label for="state" class="font-weight-bold">Selected a status</label>
+      <select class="form-control width-reset ml-3" name="state" id="state" (change)="getOrders()"
+              [(ngModel)]="selectedStatus">
+        <option *ngFor="let item of statesOrder">{{ item }}</option>
+      </select>
+    </div>
+  </div>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col" width="10px">Nº</th>
+      <th scope="col">User</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders; let index = index">
+      <th scope="col">{{index + 1}}</th>
+      <td>{{order.email}}</td>
+      <td>{{formDate(order.order_inserted_at)}}</td>
+      <td>
+        <button class="btn btn-sm btn-primary" (click)="openDialog(order)">
+          Show
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noData>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>{{message}}</h3>
+    <div class="text-right">
+      <button mat-raised-button color="primary" (click)="openDialog()">Create</button>
+    </div>
+  </div>
+</ng-template>

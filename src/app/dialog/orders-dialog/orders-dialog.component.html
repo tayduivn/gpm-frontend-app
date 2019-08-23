@@ -1,0 +1,101 @@
+<h2 mat-dialog-title>Information of user</h2>
+<mat-dialog-content [formGroup]="form">
+  <div *ngIf="order; else noData">
+    <div class="d-flex justify-content-between align-items-center mt-5">
+      <h3>Detail of the order Nº {{order.order_id}} - {{order.order_status}}</h3>
+    </div>
+    <hr>
+    <form class="d-flex align-items-center mt-3" [formGroup]="form">
+      <div class="form-group mb-0">
+        <label for="status">Selected state</label>
+        <select class="form-control width-reset ml-3 mr-3" name="status" id="status" formControlName="selectedStatus">
+          <option *ngIf="order.order_status !== 'Pending'" value="Pending">Pending</option>
+          <option *ngIf="order.order_status !== 'Sending'" value="Sending">Sending</option>
+          <option *ngIf="order.order_status !== 'Cancelled'" value="Cancelled">Cancel</option>
+        </select>
+      </div>
+      <button class="btn btn-sm btn-primary" type="submit">Change status</button>
+    </form>
+    <hr>
+    <div class="mt-4">
+      <h5>Data of client</h5>
+      <table class="table table-custom mt-3 mb-4">
+        <tbody>
+        <tr>
+          <td scope="col" width="250px">Email</td>
+          <td>{{order.email}}</td>
+        </tr>
+        <tr>
+          <td scope="col" width="250px">Name of client</td>
+          <td>{{order.first_name}} {{order.last_name}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Address</td>
+          <td>{{order.address}}</td>
+        </tr>
+        <tr>
+          <td scope="col">City</td>
+          <td>{{order.city}}</td>
+        </tr>
+        <tr>
+          <td scope="col">State</td>
+          <td>{{order.state}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Country</td>
+          <td>{{order.country}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Country Code</td>
+          <td>{{order.country_code}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Postal code</td>
+          <td>{{order.postal_code}}</td>
+        </tr>
+        <tr>
+          <td scope="col">Phone</td>
+          <td>{{order.phone}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <h5>Data of product</h5>
+      <table class="table table-custom mt-3 mb-4 text-center">
+        <tbody>
+        <tr>
+          <th scope="col" width="10px">Nº</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+        </tr>
+        <tr *ngFor="let item of order.products; let index = index">
+          <td>{{++index}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.regular_price}}</td>
+          <td>{{item.cart_quantity}}</td>
+          <td>{{getTotal(item.cart_quantity, item.regular_price)}}</td>
+        </tr>
+        <tr>
+          <th scope="col" width="10px"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">{{order.total}}</th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <ng-template #noData>
+    <div class="d-flex justify-content-between mb-3">
+      <h3>{{message}}</h3>
+    </div>
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button class="mat-raised-button" type="submit" (click)="save()" [disabled]="form.invalid">
+    Guardar
+  </button>
+  <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

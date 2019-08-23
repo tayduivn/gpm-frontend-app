@@ -1,0 +1,17 @@
+<h2 mat-dialog-title class="text-center mb-3">{{guide.title}}</h2>
+<mat-dialog-content>
+  <hr>
+  <img [src]="guide.image" alt="help 1" class="img-fluid">
+  <img *ngIf="guide.image_three" [src]="guide.image_three" alt="help 1" class="img-fluid">
+  <div class="p-3">
+    <!-- TODO: html in angular -->
+    <p v-html="guide.content"></p>
+  </div>
+  <img *ngIf="guide.image_two" [src]="guide.image_two" alt="help 1" class="img-fluid">
+  <div class="p-3">
+    <p v-html="guide.content_two"></p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-end">
+  <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

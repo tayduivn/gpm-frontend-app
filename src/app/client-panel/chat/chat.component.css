@@ -1,0 +1,76 @@
+.chat {
+  display: grid;
+  grid-template-areas: 'top' 'content' 'bottom';
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 400px 50px;
+  height: 100%;
+  left: -20px;
+  position: relative;
+  top: -20px;
+  width: calc(100% + 40px);
+}
+
+.chat .top h6 {
+  margin: 0;
+}
+
+.chat .top img, .chat .content img {
+  border-radius: 50%;
+  box-shadow: #CCC 2px 2px 6px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.chat .content p {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.chat .content a {
+  color: #007bff !important;
+  text-decoration: underline !important;
+}
+
+.chat .bottom {
+  display: flex;
+  grid-area: bottom;
+  padding: 8px;
+}
+
+.chat .bottom input {
+  -webkit-appearance: none;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(110, 91, 170, 0);
+  flex: auto;
+  margin-right: 5px;
+  padding: 5px 10px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+.chat .bottom input[type="file"] {
+  width: 50px;
+}
+
+.chat .bottom button {
+  flex: none;
+}
+
+.chat .top {
+  border-bottom: 1px solid #efecec;
+  grid-area: top;
+  padding: 0 20px;
+}
+
+.chat .top img {
+  margin: 0 10px;
+}
+
+.chat .content {
+  grid-area: content;
+  overflow-y: auto;
+  padding: 15px;
+}

@@ -1,0 +1,6 @@
+.detail-message img {
+  border-radius: 50%;
+  box-shadow: #CCC 2px 2px 6px;
+  height: 40px;
+  margin-right: 10px;
+}

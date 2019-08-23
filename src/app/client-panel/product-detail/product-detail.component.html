@@ -1,0 +1,142 @@
+<div class="product-detail">
+  <div class="product-detail-box">
+    <div *ngIf="product; else noData" class="product-box">
+      <div class="product-content">
+        <div class="product-detail-content">
+          <div class="product-images">
+            <img *ngIf="product.images" [src]="product.images[0].image" [alt]="product.name">
+            <ngx-slick-carousel class="carousel"
+                                #slickModal="slick-carousel"
+                                [config]="slideConfig">
+              <div *ngFor="let item of product.images" class="slick-image-content">
+                <img [src]="item.image" [alt]="item.name">
+              </div>
+            </ngx-slick-carousel>
+          </div>
+
+          <div class="product-info">
+            <h3>{{product.name}}</h3>
+            <p>{{product.description_short}}</p>
+            <div class="info-stars">
+              <img src="../../../assets/client/star_icon.png" alt="start product">
+              <img src="../../../assets/client/star_icon.png" alt="start product">
+              <img src="../../../assets/client/star_icon.png" alt="start product">
+              <img src="../../../assets/client/star_icon.png" alt="start product">
+              <h6>{{getCountReviews()}} Reviews</h6>
+            </div>
+            <p>{{product.regular_price}}</p>
+            <div class="info-quantity">
+              <label for="quantity">Quantity</label>
+              <div>
+                <button (click)="quantityProduct(false)">-</button>
+                <input type="text" id="quantity" [(ngModel)]="quantityValue" disabled>
+                <button (click)="quantityProduct(true)">+</button>
+              </div>
+            </div>
+            <button class="global-button green" (click)="saveCart()" [disabled]="product.quantity <= 0">
+              Buy Now
+            </button>
+            <div>
+              <small *ngIf="product.quantity <= 0" class="text-danger">Not products in the store</small>
+            </div>
+            <p>{{product.description_one}}</p>
+            <div class="info-preparation">
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <div class="product-user">
+          <h4>Data user owner of the product</h4>
+          <div class="product-user-info">
+            <div class="left">
+              <img
+                [src]="product.user[0].photo"
+                [alt]="product.user[0].email">
+              <h6>{{product.user[0].first_name}} {{product.user[0].last_name}}</h6>
+            </div>
+            <table class="right">
+              <tr>
+                <td>Email</td>
+                <td>{{product.user[0].email}}</td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td>{{product.user[0].phone}}</td>
+              </tr>
+              <tr>
+                <td>Address</td>
+                <td>{{product.user[0].address}}</td>
+              </tr>
+              <tr>
+                <td>Country</td>
+                <td>{{product.user[0].country}}</td>
+              </tr>
+              <tr>
+                <td>City</td>
+                <td>{{product.user[0].city}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <hr>
+
+        <div class="product-share">
+          <a href="/#">
+            <img src="./../../../assets/client/share_facebook_icon.png" alt="ico facebook">
+          </a>
+          <a href="/#">
+            <img src="./../../../assets/client/share_twitter_icon.png" alt="ico twitter">
+          </a>
+          <h3>Share</h3>
+        </div>
+
+        <div class="product-description-box">
+          <div class="head-content tab">
+            <p class="tablinks active" (click)="openTab($event, 'description')">Product Description</p>
+            <p class="tablinks" (click)="openTab($event, 'review')">Customer Reviews</p>
+          </div>
+          <div class="separator"></div>
+        </div>
+
+        <div id="description" class="product-description-content tabcontent">
+          <div class="description-info">
+            {{product.description_two}}
+          </div>
+        </div>
+
+        <div id="review" class="product-review-content tabcontent">
+          <div *ngIf="product.reviews; else noDataReview">
+            <div class="review-head">
+              <h3>Customer Reviews</h3>
+            </div>
+            <div *ngFor="let review of product.reviews" class="review-info">
+              <h6>{{product.name}}</h6>
+              <div>
+                <img src="../../../assets/client/star_icon.png" alt="start product"
+                     *ngFor="let index of getReviewSize(review.stars)">
+              </div>
+              <h6>{{review.title}}</h6>
+              <span>{{review.message}}</span>
+            </div>
+          </div>
+          <ng-template #noDataReview>
+            <div class="text-center">
+              <h5>Not reviews</h5>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="global-separator">
+      <div class="line"></div>
+    </div>
+
+    <ng-template #noData>
+      <div class="d-flex justify-content-between mb-3">
+        <h3>{{message}}</h3>
+      </div>
+    </ng-template>
+  </div>
+</div>

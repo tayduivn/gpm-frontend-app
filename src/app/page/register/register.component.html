@@ -1,0 +1,49 @@
+<main id="register">
+  <div class="content-logo d-flex justify-content-center">
+    <a routerLink="/index/home"><img src="../../../assets/logo.png" alt="logo"></a>
+  </div>
+  <div class="content-form">
+    <h5 class="mb-4">Sing up with Email</h5>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email" type="email">
+        <mat-error>{{getError('email')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" formControlName="pass" type="password"
+               [type]="hide ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error>{{getError('pass')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Type user</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
+        </mat-select>
+        <mat-error>{{getError('role')}}</mat-error>
+      </mat-form-field>
+      <button class="btn" (click)="doRegister()" [disabled]="form.invalid">
+        Register
+      </button>
+    </form>
+    <div class="via">
+      <span>or register via</span>
+    </div>
+    <div class="mt-3 d-flex">
+      <button class="register-facebook" (click)="doFacebook()"></button>
+      <button class="register-google" (click)="doGoogle()"></button>
+    </div>
+    <div class="content-info">
+      <p>By clicking on Sign up, you agree to GPM
+        <span class="forgot" routerLink="/index/terms">Terms and Conditions of Use.</span>
+      </p>
+      <p>To learn more about how GPM <span class="forgot" routerLink="/index/politics">Privacy Policy.</span></p>
+      <p>You haven account <span class="forgot" routerLink="/index/login">Login</span></p>
+    </div>
+  </div>
+  <ngx-loading [show]="isLoad" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }"></ngx-loading>
+</main>

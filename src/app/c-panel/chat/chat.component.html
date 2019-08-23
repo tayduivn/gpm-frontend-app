@@ -1,0 +1,46 @@
+<ng-container *ngIf="chat">
+  <div class="chat">
+    <div class="top d-flex align-items-center">
+      <a routerLink="/cPanel/chats" class="btn mr-3">Back</a>
+      <img
+        [src]="chat.second.photo"
+        [alt]="chat.second.displayName">
+      <h6>{{chat.second.displayName}}</h6>
+      <img
+        [src]="chat.first.photo"
+        [alt]="chat.first.displayName">
+      <h6>{{chat.first.displayName}}</h6>
+    </div>
+    <div class="content">
+      <div *ngFor="let msg of chat.messages">
+        <div class="msg d-flex align-items-center mb-3" *ngIf="msg.uid === chat.second_uid">
+          <img [src]="chat.second.photo" [alt]="chat.second.displayName">
+          <div>
+            <span>{{getDate(msg.createdAt)}}</span>
+            <p [innerHTML]="msg.content"></p>
+          </div>
+        </div>
+        <div class="msg d-flex align-items-center mb-3" *ngIf="msg.uid === chat.first_uid">
+          <img [src]="chat.first.photo" [alt]="chat.first.displayName">
+          <div>
+            <span>{{getDate(msg.createdAt)}}</span>
+            <p [innerHTML]="msg.content"></p>
+          </div>
+        </div>
+        <div class="msg d-flex align-items-center mb-3"
+             *ngIf="msg.uid !== chat.second_uid && msg.uid !== chat.first_uid">
+          <img src="../../../assets/login-user-icon.png" alt="admin ico">
+          <div>
+            <span>{{getDate(msg.createdAt)}}</span>
+            <p [innerHTML]="msg.content"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <input [(ngModel)]="newMsg" (keydown.enter)="submitMessage()">
+      <input class="form-control" type="file" id="file" (change)="handleFileInput($event.target)">
+      <button mat-raised-button color="primary" (click)="submitMessage()">Send</button>
+    </div>
+  </div>
+</ng-container>

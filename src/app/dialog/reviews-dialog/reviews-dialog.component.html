@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Information of the reviews</h2>
+<mat-dialog-content >
+  <table class="table table-custom mt-3 mb-4">
+    <tbody>
+    <tr>
+      <td scope="col" width="250px">User</td>
+      <td>{{review.email}}</td>
+    </tr>
+    <tr>
+      <td scope="col" width="250px">Name of product</td>
+      <td>{{review.name}}</td>
+    </tr>
+    <tr>
+      <td scope="col" width="250px">Message</td>
+      <td>{{review.message}}</td>
+    </tr>
+    <tr>
+      <td scope="col" width="250px">Starts</td>
+      <td>{{review.stars}}</td>
+    </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-end">
+  <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

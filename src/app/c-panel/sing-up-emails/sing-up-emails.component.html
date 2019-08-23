@@ -1,0 +1,26 @@
+<div *ngIf="emails; else noData">
+  <div class="d-flex justify-content-between mb-3">
+    <h3 class="mb-2">List of Emails</h3>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col" width="10px">Nº</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let email of emails; let index = index">
+      <th scope="col">{{index + 1}}</th>
+      <td>{{email.email}}</td>
+      <td>{{formDate(email.inserted_at)}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noData>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>{{message}}</h3>
+  </div>
+</ng-template>

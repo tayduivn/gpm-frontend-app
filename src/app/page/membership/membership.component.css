@@ -1,0 +1,50 @@
+.index-sidenav a {
+  color: #212121;
+}
+
+header {
+  background-color: var(--light);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Membership */
+#membership {
+  width: 100%;
+}
+
+#membership .pricing .wrapper {
+  margin: 0 auto;
+  max-width: 1360px;
+  padding: 40px 40px 60px 40px;
+  text-align: center;
+}
+
+
+#membership .pricing .wrapper h2 {
+  margin-bottom: 40px;
+}
+
+#membership .pricing .list-pricing {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+#membership .pricing .list-pricing li.content {
+  background: #fff;
+  border: 2px solid #E5E5E5;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0);
+  padding: 12px 50px;
+  text-align: center;
+}
+
+#membership .pricing .list-pricing img {
+  padding: 20px 50px;
+  width: 100%;
+}
+
+#membership .pricing .list-pricing .list-benefits li {
+  letter-spacing: 0.05rem;
+  line-height: 2rem;
+  list-style: disc;
+}

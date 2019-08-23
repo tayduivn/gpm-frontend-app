@@ -1,0 +1,12 @@
+#c-panel-home {
+  height: 100%;
+}
+
+#c-panel-home .carousel-custom {
+  margin: 0 auto;
+  max-width: 577px;
+}
+
+#c-panel-home .carousel-custom img {
+  width: 100%;
+}

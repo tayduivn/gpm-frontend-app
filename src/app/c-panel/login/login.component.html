@@ -1,0 +1,43 @@
+<div class="wrapper dark-header">
+  <section class="login-inner">
+    <div class="login-middle">
+      <div class="login-details">
+        <form [formGroup]="form">
+          <div class="login-head d-flex justify-content-center align-items-center">
+            <img src="../../../assets/logo.png" alt="logo">
+          </div>
+          <hr class="mb-3">
+          <div class="form-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" formControlName="email" type="email">
+              <mat-error>{{getError('email')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput placeholder="Password" formControlName="pass" type="password"
+                     [type]="hide ? 'password' : 'text'">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error>{{getError('pass')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <mat-checkbox formControlName="remember" color="primary" class="label-remember">Remember</mat-checkbox>
+            <span (click)="openForgot()" class="forgot-button">Forget your password?</span>
+          </div>
+          <hr>
+          <div *ngIf="!isLoad; else loading" class="text-center mt-4 mb-2">
+            <button mat-raised-button color="primary" (click)="login()" [disabled]="form.invalid">Log in</button>
+          </div>
+          <ng-template #loading>
+            <div class="d-flex justify-content-center mt-4 mb-2">
+              <mat-spinner [diameter]="50"></mat-spinner>
+            </div>
+          </ng-template>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

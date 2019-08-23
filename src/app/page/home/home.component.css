@@ -1,0 +1,169 @@
+#content-parent {
+  color: #3a3d48;
+}
+
+#home .header-info, #home-how-to .content img, #home-trading .content .trading-slick img {
+  width: 100%
+}
+
+/* header info */
+.header-info {
+  background: url("../../../assets/home/background-home.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+
+.header-info .header-group {
+  padding: 0 10% 0 100px;
+  position: relative;
+  top: 20%;
+}
+
+.header-info .header-group p {
+  margin: 30px 0 40px 0;
+}
+
+.header-info .header-group a {
+  background-color: var(--gpm-second);
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  font-size: 1.6rem;
+  padding: 10px 20px;
+}
+
+.header-info .header-group a:hover {
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.29);
+}
+
+#home-about, #home-trading, #home-how-to, #home-membership, #home-payments, #home-testimony {
+  background-color: white;
+  border-top: 1px solid rgba(207, 215, 230, 0.5);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  display: block;
+  width: 100%;
+}
+
+#home-trading, #home-membership, #home-testimony {
+  background-color: #f0f2f4;
+}
+
+#home-about .content, #home-trading .content, #home-how-to .content,
+#home-membership .content, #home-payments .content, #home-video .content, #home-testimony .content {
+  margin: 0 auto;
+  max-width: 1024px;
+  padding: 52px 32px;
+  position: relative;
+}
+
+#home-membership .content, #home-payments .content, #home-video .content, #home-testimony .content {
+  text-align: center;
+}
+
+#home-membership .content h3, #home-payments .content h4, #home-video .content h3, #home-testimony .content h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* home-about and home-how-to */
+#home-about .content, #home-trading .content, #home-how-to .content {
+  align-items: center;
+  display: flex;
+}
+
+#home-about .content div, #home-how-to .content div {
+  padding: 0 0 0 40px;
+  width: 60%;
+}
+
+h3.title, h1.title {
+  font-size: 2.2rem;
+}
+
+p.paragraph {
+  font-size: 1.8rem;
+  font-weight: lighter;
+}
+
+#home-about .content img {
+  width: 40%;
+}
+
+/* How to */
+#home-how-to .content .home-how-to-image {
+  flex: 1;
+}
+
+#home-how-to .content .home-how-to-info {
+  margin-left: 20px;
+}
+
+/* home-trading */
+#home-trading .content .trading-slick, #home-trading .content .trading-info {
+  margin: 0 4%;
+  width: 42%;
+}
+
+/* home-membership */
+
+#home-membership .content img {
+  margin: 30px 0 40px 0;
+  width: 300px;
+}
+
+/* home-payments */
+#home-payments .content {
+  padding: 32px 32px;
+}
+
+#home-payments .content .payments-info img {
+  margin: 0 10px 10px 10px;
+  width: 100px;
+}
+
+/* home-video */
+#home-video .content video {
+  width: 80%;
+}
+
+/* home-testimony */
+#home-testimony .content {
+  max-width: 700px;
+}
+
+#home-testimony .user-info img {
+  height: 50px;
+  margin-right: 20px;
+}
+
+#home-testimony .user-info {
+  margin-bottom: 2%;
+}
+
+@media screen and (min-width: 1360px) {
+
+}
+
+@media screen and (min-width: 1920px) {
+
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 700px) {
+  header .header-group {
+    max-width: 600px;
+    padding: 40px 300px 0 10px;
+  }
+
+  header .header-group h1 {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
+}

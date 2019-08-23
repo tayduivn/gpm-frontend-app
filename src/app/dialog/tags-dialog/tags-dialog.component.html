@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Information of the tag</h2>
+<mat-dialog-content [formGroup]="form">
+  <div class="form-group">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name" type="text">
+      <mat-error>{{getError('name')}}</mat-error>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button class="mat-raised-button" type="submit" (click)="save()" [disabled]="form.invalid">
+    Save
+  </button>
+  <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

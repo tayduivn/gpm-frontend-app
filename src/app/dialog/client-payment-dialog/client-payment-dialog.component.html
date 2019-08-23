@@ -1,0 +1,38 @@
+<mat-dialog-content>
+<h3>Choose your payment method</h3>
+<hr>
+<div *ngIf="!submitForm; else noData" class="payment-box">
+  <div class="payment-separator"></div>
+  <div class="payment-card">
+    <h4>Credit cart</h4>
+    <!--<vue-stripe-checkout
+      ref="checkoutRef"
+      :image="product.image"
+      :name="product.name"
+      :description="product.description"
+      :currency="product.currency"
+      :amount="getTotalPriceCheckout"
+      :allow-remember-me="false"
+      @done="done"
+      @opened="opened"
+      @closed="closed"
+      @canceled="canceled"
+    ></vue-stripe-checkout>
+    <div class="d-flex justify-content-center">
+      <button @click="checkout" class="stripe">Start checkout</button>
+    </div>-->
+  </div>
+  <div class="payment-paypal">
+    <h4>Paypal</h4>
+    <div id="paypal-button"></div>
+  </div>
+</div>
+<ng-template #noData>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>{{message}}</h3>
+  </div>
+</ng-template>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-end">
+  <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

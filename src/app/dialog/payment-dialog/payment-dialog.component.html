@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>{{title_payment}}</h2>
+<mat-dialog-content>
+  <div *ngIf="product; else noData">
+    <div *ngIf="isPayment; else map">
+      <div class="row">
+        <div class="col-md-6 yor-payment">
+          <h4 class="mb-0">Select your payment</h4>
+          <img (click)="setStripe()" src="../../../assets/icons/credit-card.png" alt="credit card">
+          <hr>
+          <div id="paypal-button"></div>
+          <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        </div>
+        <div class="col-md-6 your-product">
+          <h5>Data of product</h5>
+          <img [src]="product.images[0].image" [alt]="product.name">
+          <hr>
+          <table class="table table-custom mt-3 mb-4 text-center">
+            <tbody>
+            <tr>
+              <th scope="col">Product</th>
+              <td>{{product.name}}</td>
+            </tr>
+            <tr>
+              <th scope="col">Price</th>
+              <td>{{product.regular_price}}</td>
+            </tr>
+            <tr>
+              <th scope="col">Quantity</th>
+              <td>{{cartProducts.quantity}}</td>
+            </tr>
+            <tr>
+              <th scope="col">Total</th>
+              <td>{{totalPrice}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <ng-template #map>
+      <div class="map-payment">
+        <div class="d-flex align-items-center mb-4">
+          <h6>Buscar</h6>
+          <div id='geocoder' class='geocoder ml-3'></div>
+        </div>
+        <div id='map'></div>
+        <h6>Sitio: {{this.transaction?.address}}</h6>
+      </div>
+    </ng-template>
+  </div>
+  <ng-template #noData>
+    <div class="d-flex justify-content-between mb-3">
+      <h3>{{message}}</h3>
+    </div>
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="justify">
+    <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+    <button *ngIf="!isPayment" color="primary" mat-button class="mat-raised-button" (click)="changeView(true)">
+      Payment
+    </button>
+    <button *ngIf="isPayment" color="primary" mat-button class="mat-raised-button" (click)="changeView(false)">
+      Location
+    </button>
+  </div>
+</mat-dialog-actions>

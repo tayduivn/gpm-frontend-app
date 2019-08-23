@@ -1,0 +1,141 @@
+/* header info */
+#header-about {
+  background-color: #8abae2;
+  background-image: linear-gradient(to bottom, var(--gpm-third), #8abae2);
+  background-size: cover;
+  position: relative;
+  width: 100%
+}
+
+#header-about .image {
+  background: url("../../../assets/logo.png") no-repeat center;
+  background-size: 300px;
+  height: 400px;
+}
+
+.index-sidenav a {
+  color: white;
+}
+
+/* Global */
+#about, #benefits, #how-to,
+#about .what-is,
+#about-us .sing-up,
+#about .social,
+#about .what-is .wrapper .image img {
+  width: 100%;
+}
+
+#about {
+  padding: 0 20px 30px;
+}
+
+/* What is */
+#about-us {
+  padding: 30px 0;
+}
+
+#about-us .what-is .wrapper {
+  margin: 0 auto 40px;
+  max-width: 1360px;
+}
+
+#about-us .what-is .wrapper .content {
+  display: flex;
+}
+
+#about-us .what-is .wrapper .info {
+  flex: 40%;
+}
+
+#about-us .what-is .wrapper .image {
+  flex: 60%;
+  padding-right: 10%;
+}
+
+/* Social */
+#about-us .social .wrapper {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1360px;
+}
+
+#about-us .social .wrapper p {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+#about-us .social .wrapper .image-social ul {
+  display: flex;
+}
+
+#about-us .social .wrapper .image-social ul li a {
+  background: url("../../../assets/social-sprite.png") no-repeat;
+  display: inline-block;
+  height: 21px;
+  margin-right: 10px;
+  width: 21px;
+}
+
+#about-us .social .wrapper .image-social ul li a.twitter {
+  background-position: -21px -21px;
+}
+
+#about-us .social .wrapper .image-social ul li a.facebook {
+  background-position: -42px -21px;
+}
+
+#about-us .social .wrapper .image-social ul li a.linkedin {
+  background-position: -106px -21px;
+}
+
+#about-us .social .wrapper .image-social ul li a.instagram {
+  background-position: -127px -21px;
+}
+
+#about-us .social .wrapper .image-social ul li a.twitter:hover,
+#about-us .social .wrapper .image-social ul li a.facebook:hover,
+#about-us .social .wrapper .image-social ul li a.linkedin:hover,
+#about-us .social .wrapper .image-social ul li a.instagram:hover {
+  opacity: .8;
+}
+
+#about-us .social .wrapper .col:nth-of-type(2) p {
+  margin-bottom: 12px;
+}
+
+#about-us .social .wrapper .col:nth-of-type(2) a {
+  color: var(--gpm-third);
+  font-size: 1.1rem;
+}
+
+#about-us .sing-up .wrapper {
+  margin: 0 auto;
+  max-width: 1360px;
+  padding: 30px 0;
+  text-align: center;
+}
+
+/* How do we do it */
+#how-to .wrapper {
+  margin: 0 auto;
+  max-width: 1360px;
+  padding: 30px 0;
+}
+
+/* Benefits */
+#benefits .wrapper {
+  margin: 0 auto;
+  max-width: 1360px;
+  padding: 30px 0;
+}
+
+#benefits .wrapper ul {
+  padding-left: 40px;
+}
+
+#benefits .wrapper ul li {
+  letter-spacing: 0.05rem;
+  line-height: 2rem;
+  list-style: disc;
+}

@@ -1,0 +1,277 @@
+.products {
+  margin: 0 auto;
+  max-width: 1024px;
+  position: relative;
+}
+
+.products-head {
+  background-image: url("../../../assets/client/home-two.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 5px solid var(--gpm-third);
+  margin: 0 auto;
+  max-width: 1360px;
+}
+
+.products-head h2 {
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.1) 3px 2px 3px;
+  text-transform: uppercase;
+}
+
+.products-foot {
+  margin: 0 auto;
+  max-width: 1360px;
+  position: relative;
+}
+
+.products-foot img {
+  width: 100%;
+}
+
+.products-foot img:last-child {
+  position: absolute;
+  right: 10%;
+  top: 22%;
+  width: 100px;
+}
+
+/* Pagination */
+.pagination {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5%;
+  padding: 10px 10px 10px 10px;
+  width: 100%;
+}
+
+.pagination .selected {
+  background-color: var(--gpm-fourth);
+  color: white;
+  cursor: default;
+  padding: 5px 10px;
+}
+
+.pagination h6 {
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 0.5%;
+  padding: 5px 0;
+}
+
+.pagination .next {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.pagination span {
+  margin: 0 20%;
+}
+
+.pagination img {
+  transform: rotate(270deg);
+}
+
+/* Box */
+.products-box {
+  width: 100%;
+}
+
+.products-content {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1360px;
+}
+
+/* Filters */
+.product-filter-head {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  margin: 10px;
+}
+
+.product-filter-head img {
+  margin-left: 10px;
+  width: 20px;
+}
+
+.product-filter-head h4 {
+  display: inline-block;
+  margin: 0;
+}
+
+.product-filter {
+  background-color: #E7E7E7;
+  display: inline-block;
+  width: 100%;
+}
+
+.product-filter .filter-category {
+  cursor: pointer;
+  margin: 0;
+}
+
+.product-filter input[type="checkbox"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: white;
+  border: 1px solid #898989;
+  border-radius: 2px;
+
+  /* Styling checkbox */
+  cursor: pointer;
+  height: 16px;
+  margin-bottom: -2px;
+  margin-right: 5px;
+  width: 16px;
+}
+
+.product-filter input[type="checkbox"]:checked {
+  background-color: var(--gpm-fourth);
+  border: none;
+}
+
+.product-filter .content-filters {
+  border-top: 1px solid #CCC;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: height ease-in 0.2s;
+}
+
+.product-filter .content-filters ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-filter .content-filters ul li {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.product-filter .content-filters.isToggle {
+  height: 300px;
+}
+
+/* All products */
+.products-all {
+  background-color: #f2f4f8;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  width: 100%;
+}
+
+.products-all .card {
+  width: 100%;
+}
+
+.product-item {
+  align-items: flex-start;
+  background-clip: border-box;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+  display: flex;
+  margin: 2% 0;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.product-item .image {
+  width: 30%;
+}
+
+.product-item img {
+  height: 100%;
+  width: 100%;
+}
+
+.product-item .info {
+  padding: 0 10px 10px 10px;
+  width: 50%;
+}
+
+.product-item h6 {
+  margin: 10px 0;
+}
+
+.product-item .info:first-child {
+  margin-top: 0;
+}
+
+.product-item a:hover {
+  color: inherit;
+}
+
+.product-item button {
+  align-self: flex-end;
+  border-bottom: 1px solid var(--gpm-fourth);
+  display: block;
+  margin: 0 10px 10px auto;
+}
+
+.product-item:nth-of-type(-n+4) {
+  margin-top: 0;
+}
+
+@media screen and (min-width: 1360px) {
+
+}
+
+@media screen and (min-width: 1920px) {
+
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 700px) {
+  .products-box {
+    padding: 20px 0;
+  }
+
+  .products .products-box .products-content .product-filter {
+    padding: 20px 20px 20px 40px;
+  }
+
+  .products .products-box .products-content .products-all .product-item {
+    width: 29%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .products .products-box .products-content .products-all .product-item {
+    width: 45%;
+  }
+
+  .products .products-box .products-content {
+    flex-direction: column;
+  }
+
+  .products .products-box .products-content .product-filter {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .products .products-box .products-content .product-filter h4 {
+    margin: 2% 0;
+  }
+
+  .products .products-box .products-content .product-filter .filter-category {
+    margin: 2%;
+  }
+
+  .products .products-box .products-content .products-all {
+    padding-top: 20px;
+    width: 100%;
+  }
+}

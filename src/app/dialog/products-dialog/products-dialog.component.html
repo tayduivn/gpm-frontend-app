@@ -1,0 +1,181 @@
+<div [ngSwitch]="modalType">
+  <!-- Products -->
+  <div *ngSwitchCase="'products'">
+    <div class="d-flex justify-content-between">
+      <h3 mat-dialog-title>Information of product</h3>
+      <small *ngIf="product.id">Date of creation {{product.inserted_at}}</small>
+    </div>
+    <mat-dialog-content>
+      <form [formGroup]="form">
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="name" formControlName="name" type="text">
+            <mat-error>{{getError('name')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Description short</mat-label>
+            <input matInput placeholder="description_short" formControlName="description_short" type="text">
+            <mat-error>{{getError('description_short')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Description long one</mat-label>
+            <input matInput placeholder="description_one" formControlName="description_one" type="text">
+            <mat-error>{{getError('description_one')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Description long two</mat-label>
+            <input matInput placeholder="description_two" formControlName="description_two" type="text">
+            <mat-error>{{getError('description_two')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-3 col-6">
+            <label for="regular_price" class="mt-3 mb-3">Price</label>
+            <input class="form-control" id="regular_price" type="text" formControlName="regular_price">
+            <p class="m-0 p-0 text-left">
+              <small>Decimal point to cents</small>
+            </p>
+          </div>
+          <div class="form-group col-md-3 col-6">
+            <label for="quantity" class="mt-3 mb-3">Quantity</label>
+            <input class="form-control" id="quantity" type="text" formControlName="quantity">
+          </div>
+        </div>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button class="mat-raised-button" type="submit" (click)="save()" [disabled]="form.invalid">
+        Save
+      </button>
+      <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+  </div>
+
+  <!-- Categories -->
+  <div *ngSwitchCase="'categories'">
+    <h3 mat-dialog-title>{{product.name}} - Categories</h3>
+    <mat-dialog-content>
+      <div *ngIf="product.id === ''">
+        <p>First you need to create the product before assigning a category</p>
+      </div>
+      <div *ngIf="product.id !== ''" class="mt-3">
+        <label *ngFor="let category of categories; let index = index" class="category-text">
+          <input [id]="category.id" class="ml-4 mr-2" type="checkbox"
+                 [checked]="checkCategory(index, category, product)"
+                 (change)="sendCategory($event, product.id, category.id, index)">
+          <span>{{category.name}}</span>
+        </label>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+  </div>
+
+  <!-- Tags -->
+  <div *ngSwitchCase="'tags'">
+    <h3 mat-dialog-title>{{product.name}} - Tags</h3>
+    <mat-dialog-content>
+      <div *ngIf="product.id === ''">
+        <p>First you need to create the product before assigning a tag</p>
+      </div>
+      <div *ngIf="product.id !== ''" class="mt-3">
+        <label *ngFor="let tag of tags; let index = index" class="tag-text">
+          <input [id]="tag.id" class="ml-4 mr-2" type="checkbox"
+                 [checked]="checkTag(index, tag, product)"
+                 (change)="sendTag($event, product.id, tag.id, index)">
+          <span>{{tag.name}}</span>
+        </label>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+  </div>
+
+  <!-- Images -->
+  <div *ngSwitchCase="'images'">
+    <h3 mat-dialog-title>{{product.name}}</h3>
+    <mat-dialog-content>
+      <h4>Add image</h4>
+      <form [formGroup]="formImage" class="row">
+        <div class="form-group col-md-6">
+          <mat-form-field>
+            <mat-label>Descripción del tamaño</mat-label>
+            <input matInput placeholder="size" formControlName="size" type="text">
+            <mat-error>{{getErrorImage('size')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Imagen</label>
+          <input id="image-product" type="file" class="form-control" accept="image/*" (change)="uploadImage($event)">
+          <p class="m-0 p-0 text-left">
+            <small>Upload image</small>
+          </p>
+        </div>
+      </form>
+      <button mat-button class="mat-raised-button mr-3" type="submit" (click)="saveImage()" [disabled]="form.invalid">
+        Save
+      </button>
+      <hr>
+      <h4>Edit images</h4>
+      <form [formGroup]="formImageData">
+        <div formArrayName="values" *ngIf="product.images[0].id_image !== '0'">
+          <div class="p-1"
+               *ngFor="let image of formImageData.get('values')['controls']; let i = index" [formGroupName]="i">
+            <hr class="mb-3">
+            <div class="row">
+              <div class="image-content col-md-4 col-12">
+                <img [src]="product.images[i].image" [alt]="product.images[i].id_image">
+              </div>
+              <div class="col-md-8 col-12">
+                <div class="form-group">
+                  <mat-form-field>
+                    <mat-label>Descripción del tamaño</mat-label>
+                    <input matInput placeholder="size" formControlName="size" type="text">
+                    <mat-error>{{getErrorImage('size')}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <label>Image</label>
+                  <input type="file" class="form-control" accept="image/*" (change)="uploadImage($event)">
+                  <p class="m-0 p-0 text-left">
+                    <small>Upload image</small>
+                  </p>
+                </div>
+                <button mat-button class="mat-raised-button mr-3" type="submit"
+                        (click)="editDataImage(product.images[i].id_image, i)"
+                        [disabled]="form.invalid">
+                  Save
+                </button>
+                <button mat-button class="mat-raised-button" type="submit"
+                        (click)="deleteDataImage(product.images[i].id_image, i)"
+                        [disabled]="form.invalid" color="warn">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="product.images[0].id_image === '0'">
+          <div class="image-content col-md-4 col-12">
+            <img [src]="product.images[0].image" [alt]="product.images[0].id_image">
+          </div>
+          <div class="image-content col-md-8 col-12">
+            <h6>This image is by default. Upload new image</h6>
+          </div>
+        </div>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+  </div>
+</div>

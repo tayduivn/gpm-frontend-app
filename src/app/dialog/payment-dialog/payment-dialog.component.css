@@ -1,0 +1,19 @@
+.yor-payment img, .your-product img {
+  width: 100%;
+}
+
+.yor-payment img {
+  cursor: pointer;
+  padding: 20px 50px 0;
+}
+
+.justify {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.map-payment #map {
+  height: 300px;
+  width: 100%;
+}

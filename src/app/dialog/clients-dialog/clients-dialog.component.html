@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Information of User</h2>
+<mat-dialog-content>
+  <h3>{{user.first_name}} {{user.last_name}}</h3>
+  <table class="table table-custom mt-3">
+    <tbody>
+    <tr>
+      <td scope="col" width="160px">Email</td>
+      <td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <td scope="col">Address</td>
+      <td>{{user.address}}</td>
+    </tr>
+    <tr>
+      <td scope="col">City</td>
+      <td>{{user.city}}</td>
+    </tr>
+    <tr>
+      <td scope="col">State</td>
+      <td>{{user.state}}</td>
+    </tr>
+    <tr>
+      <td scope="col">Country</td>
+      <td>{{user.country}}</td>
+    </tr>
+    <tr>
+      <td scope="col">Country Code</td>
+      <td>{{user.country_code}}</td>
+    </tr>
+    <tr>
+      <td scope="col">Postal code</td>
+      <td>{{user.postal_code}}</td>
+    </tr>
+    <tr>
+      <td scope="col">Phone</td>
+      <td>{{user.phone}}</td>
+    </tr>
+    <tr>
+      <td scope="col">Date of creation</td>
+      <td>{{formaDate(user.user_inserted_at)}}</td>
+    </tr>
+    </tbody>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-end">
+  <button mat-button class="mat-raised-button" (click)="close()">Close</button>
+</mat-dialog-actions>

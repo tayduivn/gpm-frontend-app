@@ -1,0 +1,34 @@
+.order {
+  padding: 10px;
+}
+
+.order-order {
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+.table-order tr td, .table-order tr th {
+  vertical-align: middle;
+}
+
+.status-order {
+  border-bottom: 1px solid #CCC;
+}
+
+button {
+  background: transparent;
+  border: none;
+  font-size: .9rem;
+  font-weight: 600;
+  outline: none;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+
+.active {
+  border-bottom: 5px solid #74a0c7;
+}
+
+::ng-deep .mat-raised-button {
+  line-height: initial;
+}

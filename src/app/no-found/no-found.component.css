@@ -1,0 +1,6 @@
+#error404 {
+  background-size: contain;
+  background: #04a9eb url("../../assets/error404.jpg") no-repeat 50% 70%;
+  height: 100vh;
+  color: white;
+}

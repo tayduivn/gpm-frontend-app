@@ -1,0 +1,44 @@
+<div *ngIf="categories; else noData">
+  <div class="d-flex justify-content-between mb-3">
+    <h3 class="mb-2">List of Categories</h3>
+    <div class="text-right">
+      <button class="btn-sm btn-primary" (click)="openDialog()">Create</button>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col" width="10px">Nº</th>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col" width="10"></th>
+      <th scope="col" width="10"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let category of categories; let index = index">
+      <th scope="col">{{index + 1}}</th>
+      <td>{{category.name}}</td>
+      <td>{{formDate(category.inserted_at)}}</td>
+      <td>
+        <button class="btn btn-sm btn-success" (click)="openDialog(category)">
+          Edit
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="confirmDialog(category.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noData>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>{{message}}</h3>
+    <div class="text-right">
+      <button mat-raised-button color="primary" (click)="openDialog()">Create</button>
+    </div>
+  </div>
+</ng-template>

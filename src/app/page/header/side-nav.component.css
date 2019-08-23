@@ -1,0 +1,76 @@
+.index-sidenav {
+  background-color: transparent;
+  height: auto;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 0;
+  position: relative;
+  top: 0;
+  transition: none;
+  width: auto;
+  z-index: 10000;
+}
+
+.index-sidenav a, .index-sidenav button {
+  background: transparent;
+  color: #818181;
+  display: inline-block;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+}
+
+.index-sidenav a:hover, .index-sidenav button:hover {
+  color: #f1f1f1;
+}
+
+.index-sidenav .closebtn {
+  display: none;
+  font-size: 36px;
+  margin-left: 50px;
+  position: absolute;
+  right: 25px;
+  top: 0;
+}
+
+@media screen and (min-width: 1360px) {
+
+}
+
+@media screen and (min-width: 1920px) {
+
+}
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 700px) {
+  .index-sidenav .closebtn {
+    display: inline-block;
+  }
+
+  .index-sidenav {
+    background-color: rgba(255, 255, 255, 0.97);
+    height: 100%;
+    left: -300px;
+    padding-top: 50px;
+    position: fixed;
+    transition: 0.5s;
+    width: 300px;
+  }
+
+  .index-sidenav a, .index-sidenav button {
+    display: block;
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .index-sidenav {
+    padding-top: 15px;
+  }
+
+  .index-sidenav a {
+    font-size: 18px;
+  }
+}

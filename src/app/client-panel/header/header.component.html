@@ -1,0 +1,33 @@
+<header id="header-home">
+  <div class="header-content">
+    <a routerLink="/client/home" id="logo"></a>
+    <nav id="mySidenav" class="index-sidenav">
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+      <a routerLink="/client/guide">Guide</a>
+      <a class="dropbtn" *ngIf="status === 'complete'" (click)="dropdownShow(0)">Menu</a>
+      <div class="dropdown-content menu">
+        <a *ngIf="user.role_id === '2' || user.role_id === '4'" routerLink="/client/my-products"
+           routerLinkActive="isActive">
+          <i class="fas fa-boxes mr-3"></i>My products
+        </a>
+        <a routerLink="/client/products" routerLinkActive="isActive">
+          <i class="fas fa-store mr-3"></i>products
+        </a>
+        <a routerLink="/client/trending" routerLinkActive="isActive">
+          <i class="fas fa-chart-line mr-3"></i>trending
+        </a>
+        <a routerLink="/client/orders" routerLinkActive="isActive">
+          <i class="fas fa-dolly mr-3"></i>orders
+        </a>
+      </div>
+      <a class="dropbtn" (click)="dropdownShow(1)">Profile</a>
+      <div class="dropdown-content profile">
+        <a routerLink="/client/profile"><i class="fas fa-user mr-3"></i>Profile</a>
+        <a (click)="logout()"><i class="fas fa-sign-out-alt mr-3"></i>Logout</a>
+      </div>
+    </nav>
+  </div>
+  <div id="menu" class="menu" onclick="openNav()">
+    <a><img src="../../../assets/icon-menu.png" alt="menu profile"></a>
+  </div>
+</header>

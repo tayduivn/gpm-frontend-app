@@ -1,0 +1,18 @@
+#language {
+  padding: 50px;
+  width: 100%;
+}
+
+#language .flags {
+  width: 100%;
+}
+
+#language .flags li {
+  align-items: center;
+  display: inline-flex;
+  width: 33%;
+}
+
+#language .flags img {
+  width: 80%;
+}

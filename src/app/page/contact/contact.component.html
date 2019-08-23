@@ -1,0 +1,57 @@
+<main id="contact" class="position-menu">
+  <section class="head">
+    <div class="wrapper">
+      <h4>Contacting GPM</h4>
+    </div>
+  </section>
+  <section class="content">
+    <form [formGroup]="form">
+      <label for="email-contact">Email</label>
+      <input type="email" id="email-contact" formControlName="email">
+      <div class="error-input" *ngIf="email.invalid && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required">Email is required.</p>
+        <p *ngIf="email.errors.email">Email is incorrect.</p>
+      </div>
+
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="name">
+      <div class="error-input" *ngIf="name.invalid && (name.dirty || name.touched)">
+        <p *ngIf="name.errors.required">Name is required.</p>
+      </div>
+
+      <label for="message">Message</label>
+      <textarea type="text" id="message" rows="8" formControlName="message"></textarea>
+      <div class="error-input" *ngIf="message.invalid && (message.dirty || message.touched)">
+        <p *ngIf="message.errors.required">Message is required.</p>
+      </div>
+
+      <div class="text-right mt-3">
+        <button class="btn">Send</button>
+      </div>
+    </form>
+    <div class="image">
+      <img src="../../../assets/logo.png" alt="logo">
+    </div>
+  </section>
+  <hr>
+  <section class="info">
+    <div class="wrapper">
+      <div class="col-contact">
+        <p>Social networks</p>
+        <div class="image-social">
+          <ul>
+            <li><a href="/#" class="twitter"></a></li>
+            <li><a href="/#" class="facebook"></a></li>
+            <li><a href="/#" class="linkedin"></a></li>
+            <li><a href="/#" class="instagram"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-contact">
+        <p>Media contact</p>
+        <a href="/#">contact@gpm.com</a>
+        <span><i class="fas fa-phone-square mr-2"></i>+1-64411214</span>
+      </div>
+    </div>
+  </section>
+</main>

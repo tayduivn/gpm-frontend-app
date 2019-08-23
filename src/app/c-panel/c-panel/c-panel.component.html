@@ -1,0 +1,72 @@
+<div class="grid-container">
+  <div class="menu-icon">
+    <i class="fas fa-bars header__menu"></i>
+  </div>
+
+  <header class="header">
+    <div class="header__search"></div>
+    <div class="header__avatar">
+      <div class="dropdown">
+        <button (click)="dropdownShow()" class="dropbtn"></button>
+        <div id="myDropdown" class="dropdown-content">
+          <a routerLink="/cPanel/profile">Profile</a>
+          <a (click)="logout()">Logout</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="sidenav">
+    <div class="sidenav__close-icon">
+      <i class="fas fa-times sidenav__brand-close"></i>
+    </div>
+    <ul class="sidenav__list">
+      <li class="sidenav__list-item">
+        <img src="../../../assets/logo.png" alt="logo">
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/client">clients</a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/products">products</a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/categories">categories</a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/reviews">reviews</a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/orders">
+          orders
+        </a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/users">users</a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/chats">chats</a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/emails">emails</a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/payments">payments</a>
+      </li>
+      <li class="sidenav__list-item">
+        <a routerLink="/cPanel/guide">guide</a>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="main p-4">
+    <div class="content-main">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__copyright">&copy; 2019 Global Pulses Market</div>
+    <div class="footer__signature"></div>
+  </footer>
+</div>

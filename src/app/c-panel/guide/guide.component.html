@@ -1,0 +1,17 @@
+<div id="guide-goa">
+  <h1 class="text-center mb-3">Ayuda Global Pulses Market</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col" width="10px">Nº</th>
+      <th scope="col">Título</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="open-mod-table" *ngFor="let guide of guides; let index = index" (click)="openDialog(guide)">
+      <th scope="col">{{index + 1}}</th>
+      <td>{{guide.title}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

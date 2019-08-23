@@ -1,0 +1,78 @@
+<div *ngIf="carts; else noData">
+  <div class="cart">
+    <div class="cart-box">
+      <h2>Shopping Cart</h2>
+      <div class="cart-content" *ngIf="quantityValue.length > 0; else noDataProduct">
+        <div class="cart-products">
+          <div class="cart-table">
+            <table class="table table-custom mt-3 mb-4 text-center">
+              <tbody>
+              <tr>
+                <th scope="col" width="10px">Nº</th>
+                <th scope="col" width="10px"></th>
+                <th scope="col"></th>
+                <th scope="col">Price</th>
+                <th scope="col">Qty</th>
+              </tr>
+              <tr *ngFor="let product of carts.products; let index = index">
+                <td>{{index + 1}}</td>
+                <td><img [src]="product.images[0].image" [alt]="product.name"></td>
+                <td>{{product.name}}</td>
+                <td>{{product.regular_price}}</td>
+                <td>
+                  <div class="info-quantity">
+                    <div>
+                      <button (click)="quantityProduct(false, index)">-</button>
+                      <input type="text" [value]="quantityValue[index].quantity" disabled>
+                      <button (click)="quantityProduct(true, index)">+</button>
+                    </div>
+                  </div>
+                  <small *ngIf="validateQuantity(product, index)">
+                    The maximum in store is {{product.quantity}}
+                  </small>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="text-right">
+              <button (click)="updateCart()" class="global-button button-update-cart">
+                Update Shopping Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="cart-summary">
+          <h3>Summary</h3>
+          <div class="d-flex justify-content-between mt-2 mb-1">
+            <h6>Estimated Total</h6>
+            <p>${{totalPrice}}</p>
+          </div>
+          <p>Shipping and Tax</p>
+          <hr class="mt-4">
+          <div class="summary">
+            <a routerLink="/products" class="global-button transparent">Continue Shopping</a>
+            <button class="global-button green" (click)="openDialog()">Checkout</button>
+          </div>
+        </div>
+      </div>
+      <ng-template #noDataProduct>
+        <div class="d-flex justify-content-center mb-3">
+          <div class="order-message-empty text-center">
+            <h3>Currently you do not have added products</h3>
+            <button mat-raised-button color="primary" routerLink="/client/products">Register a new product</button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<ng-template #noData>
+  <div class="d-flex flex-column mb-3 p-4">
+    <h3>{{message}}</h3>
+    <hr>
+    <div class="order-message-empty text-center">
+      <h3>Currently you do not have added products</h3>
+      <button mat-raised-button color="primary" routerLink="/client/products">Register a new product</button>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,33 @@
+<div *ngIf="users; else noData">
+  <h3 class="mb-2">List of clients</h3>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col" width="10px">Nº</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users; let index = index">
+      <th scope="col">{{index + 1}}</th>
+      <td>{{user.email}}</td>
+      <td>{{formDate(user.user_inserted_at)}}</td>
+      <td width="50px">
+        <button class="btn btn-sm btn-primary" (click)="openDialog(user)">
+          Show
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noData>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>{{message}}</h3>
+    <div class="text-right">
+      <button mat-raised-button color="primary" (click)="openDialog()">Create</button>
+    </div>
+  </div>
+</ng-template>

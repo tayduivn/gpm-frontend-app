@@ -1,0 +1,16 @@
+<!-- TODO: validate user login -->
+<header id="header-home">
+  <div class="header-content">
+    <a routerLink="/index/home" id="logo"></a>
+    <nav id="mySidenav" class="index-sidenav">
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+      <a [class]="color" class="scrollLink" routerLink="about">About</a>
+      <a [class]="color" class="scrollLink" routerLink="membership">Membership</a>
+      <a [class]="color" class="scrollLink" routerLink="contact">Contact</a>
+      <a [class]="color" class="scrollLink" routerLink="login">Login</a>
+    </nav>
+  </div>
+  <div id="menu" class="menu" onclick="openNav()">
+    <a><img src="../../../assets/icon-menu.png" alt="menu profile"></a>
+  </div>
+</header>

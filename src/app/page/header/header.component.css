@@ -1,0 +1,161 @@
+.base {
+  position: relative;
+  width: 100%;
+}
+
+/* Header */
+#header-home {
+  background-color: transparent;
+  position: fixed;
+  transition: all ease-in 0.3s;
+  width: 100%;
+  z-index: 1000;
+}
+
+header .header-content {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1360px;
+  padding: 5px 10px 5px 10px;
+  position: relative;
+  z-index: 1000;
+}
+
+header nav a {
+  color: #212121;
+  padding: 10px 15px;
+  text-transform: uppercase;
+}
+
+header nav a.white {
+  color: white;
+}
+
+header nav a:hover {
+  color: var(--gpm-second);
+}
+
+header nav a.router-link-active {
+  color: var(--gpm-second);
+}
+
+#logo {
+  background-image: url('../../../assets/logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  float: left;
+  height: 80px;
+  max-width: 280px;
+  position: relative;
+  transition: height ease-in 0.3s;
+  width: calc(100% - 50px);
+}
+
+nav {
+  flex: none;
+  float: right;
+}
+
+nav a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: font-size ease-in 0.3s;
+}
+
+.menu {
+  display: none;
+}
+
+.sticky {
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: #ccc 0 0 6px;
+  top: 0;
+}
+
+.sticky a {
+  font-size: 1rem !important;
+  font-weight: 400;
+}
+
+.sticky a.white {
+  color: #212121 !important;
+}
+
+.sticky #logo {
+  height: 60px !important;
+}
+
+/* standard menu */
+@media only screen and (min-width: 701px) {
+  nav {
+    display: inline-block !important;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  nav {
+    position: relative;
+    top: 5px;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+
+}
+
+@media screen and (min-width: 1360px) {
+
+}
+
+@media screen and (max-width: 1024px) {
+  header .header-content {
+    max-width: 1024px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  header nav a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    display: block;
+    padding: 10px;
+  }
+
+  header nav a:last-child {
+    border-bottom: none;
+  }
+
+  header .header-content {
+    display: block;
+    overflow: hidden;
+  }
+
+  #header-home {
+    padding-top: 10px;
+  }
+
+  #logo {
+    height: 40px;
+    top: 0;
+  }
+
+  .menu {
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    top: 4%;
+  }
+
+  .menu img {
+    width: 25px;
+  }
+
+  .header-info {
+    background-size: contain;
+  }
+}
+
+@media screen and (max-width: 400px) {
+}

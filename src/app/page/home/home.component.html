@@ -1,0 +1,98 @@
+<div id="content-parent">
+  <div class="header-info" id="header-info">
+    <div class="header-group">
+      <h1 class="title">Generamos las mejores oportunidades de negocios para nuestros usuarios</h1>
+      <p class="paragraph">GPM le permitirá a los usuarios tomar un rol de vendedor o comprador dentro de la aplicación
+        en donde el productor pueda entrar al ecosistema principal de la aplicación</p>
+      <a [routerLink]="['/index/login']">Join Us</a>
+    </div>
+  </div>
+
+  <main id="home">
+    <section id="home-about">
+      <div class="content">
+        <img src="../../../assets/home/LOCALLY%20GROWTH.png" alt="about">
+        <div>
+          <h3 class="title">GPM “GLOBAL PULSES MARKET”</h3>
+          <p class="paragraph">Somos una startup de jóvenes emprendedores, dedicados a optimizar la comercialización
+            electrónica de granos.
+            Nuestro propósito es minimizar las brechas de información y comunicación en toda la cadena comercial sobre
+            precios de oferta y demanda; análisis y tendencias, en un mercado como el de las specialities.</p>
+        </div>
+      </div>
+    </section>
+    <section id="home-trading">
+      <div class="content">
+        <div class="trading-info">
+          <h3 class="title">Trading</h3>
+          <p class="paragraph">Por medio de un sistema de oferta y demanda se podrá consultar el precio de mercado de
+            venta o compra de
+            cada
+            producto. Luego de cada transacción realizada, los usuarios podrán calificar su experiencia, generando un
+            perfil para cada usuario según su comportamiento.</p>
+        </div>
+        <div class="trading-slick">
+          <ngx-slick-carousel class="carousel"
+                              #slickModal="slick-carousel"
+                              [config]="slideConfig">
+            <div ngxSlickItem *ngFor="let n of [0, 1, 2]" class="slide">
+              <img src="../../../assets/logo.png" alt="logo">
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </section>
+    <section id="home-how-to">
+      <div class="content">
+        <div class="how-to-image">
+          <img src="../../../assets/logo.png" alt="logo">
+        </div>
+        <div class="how-to-info">
+          <h3 class="title">How to make us?</h3>
+          <p class="paragraph">A través de una gran red de contactos generados en las principales ferias de alimentos
+            por todo el mundo. Donde nos enfocamos en los clientes que vision a largo plazo, con intensiones de generar
+            fuertes vínculos comerciales.</p>
+        </div>
+      </div>
+    </section>
+    <section id="home-membership">
+      <div class="content">
+        <h3 class="title">Membership GPM</h3>
+        <img src="../../../assets/logo.png" alt="member">
+        <p class="paragraph">Mediante una membresía los usuarios podrán obtener información de alta calidad como:
+          tendencias, novedades, ofertas, entre otros.</p>
+      </div>
+    </section>
+    <section id="home-payments">
+      <div class="content">
+        <h4 class="title">Accept Payments</h4>
+        <div class="payments-info">
+          <img src="../../../assets/logo.png" alt="member">
+          <img src="../../../assets/logo.png" alt="member">
+          <img src="../../../assets/logo.png" alt="member">
+          <img src="../../../assets/logo.png" alt="member">
+        </div>
+      </div>
+    </section>
+    <section id="home-testimony">
+      <div class="content" data-aos="fade-up" data-aos-once="true">
+        <h3 class="title">Our users</h3>
+        <div class="testimony-slick">
+          <ngx-slick-carousel class="carousel"
+                              #slickModal="slick-carousel"
+                              [config]="slideConfigTestimony">
+            <div ngxSlickItem *ngFor="let comment of comments" class="slide">
+              <div>
+                <p class="mt-5 mb-5">{{comment.comment}}</p>
+                <div class="user-info d-flex align-items-center">
+                  <img [src]="comment.img" [alt]="comment.name">
+                  <h6>{{comment.name}}</h6>
+                </div>
+              </div>
+            </div>
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
