@@ -158,10 +158,16 @@ export class InfoPageDialogComponent implements OnInit {
   }
 
   public changePage(value: any) {
-    console.log(value);
     switch (value) {
       case 'Home':
-        this.sections = ['Header', 'About', 'Trending', 'How to', 'Membership', 'Testimony'];
+        this.sections = [
+          {id: 'header', value: 'Header'},
+          {id: 'about', value: 'About'},
+          {id: 'trading', value: 'Trading'},
+          {id: 'how_to', value: 'How to'},
+          {id: 'membership', value: 'Membership'},
+          {id: 'testimony', value: 'Testimony'}
+        ];
         break;
       case 'About':
         this.sections = [];

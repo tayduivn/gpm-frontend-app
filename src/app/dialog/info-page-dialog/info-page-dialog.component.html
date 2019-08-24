@@ -34,7 +34,7 @@
           <mat-form-field>
             <mat-label>Select one section</mat-label>
             <mat-select formControlName="section">
-              <mat-option *ngFor="let section of sections" [value]="section">{{section}}</mat-option>
+              <mat-option *ngFor="let section of sections" [value]="section.id">{{section.value}}</mat-option>
             </mat-select>
             <mat-error>{{getError('section')}}</mat-error>
           </mat-form-field>

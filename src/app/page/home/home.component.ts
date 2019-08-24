@@ -36,8 +36,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.infoPageApiService.getInfoPages('?reference=Home').subscribe((res: any) => {
-      this.infoPages = res.data;
-      this.infoPages.forEach((item) => this.comments.push(item));
+      console.log(res.data.header);
+      /*this.infoPages = res.data;*/
+      /*this.infoPages.forEach((item) => this.comments.push(item));*/
     });
     AOS.init();
   }
