@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as AOS from 'aos';
 import 'aos/dist/aos.css';
+import {InfoPageApiService} from '../../services/api/info-page-api.service';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,8 @@ import 'aos/dist/aos.css';
 })
 export class HomeComponent implements OnInit {
 
+  public infoPages: any;
+  public comments = [];
   slideConfig = {
     arrows: false,
     autoplay: true,
@@ -25,16 +28,17 @@ export class HomeComponent implements OnInit {
     infinite: true,
     slidesToScroll: 1,
   };
-  comments = [
-    {name: 'Juan Torrealba', comment: 'Excelente plataforma para vender mis productos', img: '../../../assets/logo.png'},
-    {name: 'Jesús Pacheco', comment: 'He conseguido lo que necesitaba', img: '../../../assets/logo.png'},
-    {name: 'María Gonzalez', comment: 'He realizado mis pagos seguro', img: '../../../assets/logo.png'}
-  ];
 
-  constructor() {
+  constructor(
+    private infoPageApiService: InfoPageApiService
+  ) {
   }
 
   ngOnInit() {
+    this.infoPageApiService.getInfoPages('?reference=Home').subscribe((res: any) => {
+      this.infoPages = res.data;
+      this.infoPages.forEach((item) => this.comments.push(item));
+    });
     AOS.init();
   }
 

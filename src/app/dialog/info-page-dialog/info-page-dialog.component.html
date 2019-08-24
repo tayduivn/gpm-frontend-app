@@ -24,10 +24,19 @@
         <div class="form-group">
           <mat-form-field>
             <mat-label>Select one page</mat-label>
-            <mat-select formControlName="reference">
-              <mat-option *ngFor="let reference of references" [value]="reference">{{reference}}</mat-option>
+            <mat-select formControlName="page" (selectionChange)="changePage($event.value)">
+              <mat-option *ngFor="let page of pages" [value]="page">{{page}}</mat-option>
             </mat-select>
-            <mat-error>{{getError('reference')}}</mat-error>
+            <mat-error>{{getError('page')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Select one section</mat-label>
+            <mat-select formControlName="section">
+              <mat-option *ngFor="let section of sections" [value]="section">{{section}}</mat-option>
+            </mat-select>
+            <mat-error>{{getError('section')}}</mat-error>
           </mat-form-field>
         </div>
       </form>

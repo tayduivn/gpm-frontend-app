@@ -18,7 +18,8 @@ export class InfoPageDialogComponent implements OnInit {
   public formImageData: FormGroup;
   public modalType: string;
   public infoPage: ModelInfoPage;
-  public references = ['Home', 'About', 'Membership'];
+  public pages = ['Home', 'About', 'Membership'];
+  public sections = [];
   private formData = new FormData();
   private fileToUpload = [];
 
@@ -40,15 +41,18 @@ export class InfoPageDialogComponent implements OnInit {
       this.form = this.fb.group({
         title: ['', [Validators.required]],
         content: ['', [Validators.required]],
-        reference: ['', [Validators.required]]
+        page: ['', [Validators.required]],
+        section: ['', [Validators.required]]
       });
     } else {
       this.infoPage = data;
+      this.changePage(this.infoPage.page);
       this.modalType = data.modalType;
       this.form = this.fb.group({
         title: [this.infoPage.title, [Validators.required]],
         content: [this.infoPage.content, [Validators.required]],
-        reference: [this.infoPage.reference, [Validators.required]]
+        page: [this.infoPage.page, [Validators.required]],
+        section: [this.infoPage.section, [Validators.required]]
       });
 
       /* Form image */
@@ -151,5 +155,23 @@ export class InfoPageDialogComponent implements OnInit {
 
   public close() {
     this.dialogRef.close();
+  }
+
+  public changePage(value: any) {
+    console.log(value);
+    switch (value) {
+      case 'Home':
+        this.sections = ['Header', 'About', 'Trending', 'How to', 'Membership', 'Testimony'];
+        break;
+      case 'About':
+        this.sections = [];
+        break;
+      case 'Membership':
+        this.sections = [];
+        break;
+      default:
+        this.sections = [];
+        break;
+    }
   }
 }

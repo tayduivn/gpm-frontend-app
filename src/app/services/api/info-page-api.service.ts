@@ -17,8 +17,8 @@ export class InfoPageApiService {
   ) {
   }
 
-  getInfoPages(): Observable<ModelInfoPage> {
-    return this.http.get<ModelInfoPage>(`${this.request.apiInfoPages.allPublic}`)
+  getInfoPages(query = ''): Observable<ModelInfoPage> {
+    return this.http.get<ModelInfoPage>(`${this.request.apiInfoPages.allPublic}${query}`)
       .pipe(
         retry(1),
         catchError(this.request.handleError)

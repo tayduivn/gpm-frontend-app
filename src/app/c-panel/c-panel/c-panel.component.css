@@ -81,11 +81,11 @@
 
 .sidenav__list-item:first-child {
   align-items: center;
-  background-color: #0d0d0d;
+  background-color: lightslategray;
   display: flex;
   height: 50px;
   margin-bottom: 10px;
-  padding: 10px 20px;
+  padding: 5px 0;
 }
 
 .sidenav__list-item:first-child img {
@@ -254,6 +254,7 @@
   display: block;
   padding: 10px 20px;
   text-decoration: none;
+  text-transform: capitalize;
   -moz-transition: 0.2s linear;
   -ms-transition: 0.2s linear;
   -o-transition: 0.2s linear;

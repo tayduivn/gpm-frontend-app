@@ -37,7 +37,7 @@ export class InfoPageComponent implements OnInit {
       });
   }
 
-  deleteProduct(id) {
+  deleteInfoPage(id) {
     this.dialog.open(ConfirmDialogComponent, {disableClose: false}).afterClosed().subscribe(result => {
       if (result) {
         this.infoPageApiService.deleteInfoPage(id).subscribe(() => {
