@@ -1,4 +1,4 @@
-<div id="content-parent" *ngIf="infoPages && infoPages.length > 0">
+<div id="content-parent" *ngIf="infoPages">
   <div class="header-info" id="header-info">
     <div class="header-group">
       <h1 class="title">{{infoPages.header[0].title}}</h1>
@@ -48,7 +48,7 @@
     <section id="home-membership">
       <div class="content">
         <h3 class="title">{{infoPages.membership[0].title}}</h3>
-        <img [src]="infoPages.images[0].membership[0].image" [alt]="infoPages.membership[0].title">
+        <img [src]="infoPages.membership[0].images[0].image" [alt]="infoPages.membership[0].title">
         <p class="paragraph">{{infoPages.membership[0].content}}</p>
       </div>
     </section>
@@ -63,19 +63,19 @@
         </div>
       </div>
     </section>
-    <section id="home-testimony">
-      <div class="content" data-aos="fade-up" data-aos-once="true">
+    <section id="home-testimony" data-aos="fade-up" data-aos-once="true">
+      <div class="content">
         <h3 class="title">Our users</h3>
         <div class="testimony-slick">
           <ngx-slick-carousel class="carousel"
                               #slickModal="slick-carousel"
                               [config]="slideConfigTestimony">
-            <div ngxSlickItem *ngFor="let comment of comments" class="slide">
+            <div ngxSlickItem *ngFor="let testimony of infoPages.testimony" class="slide">
               <div>
-                <p class="mt-5 mb-5">{{comment.content}}</p>
+                <p class="mt-5 mb-5">{{testimony.content}}</p>
                 <div class="user-info d-flex align-items-center">
-                  <img [src]="comment.images[0].image" [alt]="comment.title">
-                  <h6>{{comment.title}}</h6>
+                  <img [src]="testimony.images[0].image" [alt]="testimony.title">
+                  <h6>{{testimony.title}}</h6>
                 </div>
               </div>
             </div>

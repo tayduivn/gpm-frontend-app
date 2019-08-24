@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import * as AOS from 'aos';
-import 'aos/dist/aos.css';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import * as AOS from '../../../assets/js/aos.js';
 import {InfoPageApiService} from '../../services/api/info-page-api.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['../../../assets/js/aos.css', './home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   public infoPages: any;
   public comments = [];
@@ -35,12 +34,16 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.infoPageApiService.getInfoPages('?reference=Home').subscribe((res: any) => {
-      console.log(res.data.header);
-      /*this.infoPages = res.data;*/
-      /*this.infoPages.forEach((item) => this.comments.push(item));*/
+    this.infoPageApiService.getInfoPages('?page=Home').subscribe((res: any) => {
+      this.infoPages = res.data;
+      AOS.init({
+        disable: 'phone',
+        once: true
+      });
     });
-    AOS.init();
+  }
+
+  ngAfterViewInit(): void {
   }
 
 }
