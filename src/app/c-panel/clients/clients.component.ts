@@ -11,7 +11,7 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./clients.component.css']
 })
 export class ClientsComponent implements OnInit {
-  users: ModelUser;
+  users: [ModelUser];
   message = 'Loading...';
 
   constructor(

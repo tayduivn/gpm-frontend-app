@@ -1,8 +1,9 @@
 <div id="content-parent" *ngIf="infoPages">
   <div class="header-info" id="header-info">
+    <img src="../../../assets/home/background-home.jpg" [alt]="infoPages.header[0].title">
     <div class="header-group">
       <h1 class="title">{{infoPages.header[0].title}}</h1>
-      <p class="paragraph">{{infoPages.header[0].content}}</p>
+      <p class="paragraph" [innerHTML]="infoPages.header[0].content"></p>
       <a [routerLink]="['/index/login']">Join Us</a>
     </div>
   </div>
@@ -13,7 +14,7 @@
         <img [src]="infoPages.about[0].images[0].image" [alt]="infoPages.title">
         <div>
           <h3 class="title">{{infoPages.about[0].title}}</h3>
-          <p class="paragraph">{{infoPages.about[0].content}}</p>
+          <p class="paragraph" [innerHTML]="infoPages.about[0].content"></p>
         </div>
       </div>
     </section>
@@ -21,7 +22,7 @@
       <div class="content">
         <div class="trading-info">
           <h3 class="title">{{infoPages.trading[0].title}}</h3>
-          <p class="paragraph">{{infoPages.trading[0].content}}</p>
+          <p class="paragraph" [innerHTML]="infoPages.trading[0].content"></p>
         </div>
         <div class="trading-slick" *ngIf="infoPages.trading[0].images">
           <ngx-slick-carousel class="carousel"
@@ -41,7 +42,7 @@
         </div>
         <div class="how-to-info">
           <h3 class="title">{{infoPages.how_to[0].title}}</h3>
-          <p class="paragraph">{{infoPages.how_to[0].content}}</p>
+          <p class="paragraph" [innerHTML]="infoPages.how_to[0].content"></p>
         </div>
       </div>
     </section>
@@ -49,7 +50,7 @@
       <div class="content">
         <h3 class="title">{{infoPages.membership[0].title}}</h3>
         <img [src]="infoPages.membership[0].images[0].image" [alt]="infoPages.membership[0].title">
-        <p class="paragraph">{{infoPages.membership[0].content}}</p>
+        <p class="paragraph" [innerHTML]="infoPages.membership[0].content"></p>
       </div>
     </section>
     <section id="home-payments">
@@ -72,7 +73,7 @@
                               [config]="slideConfigTestimony">
             <div ngxSlickItem *ngFor="let testimony of infoPages.testimony" class="slide">
               <div>
-                <p class="mt-5 mb-5">{{testimony.content}}</p>
+                <p class="mt-5 mb-5" [innerHTML]="testimony.content"></p>
                 <div class="user-info d-flex align-items-center">
                   <img [src]="testimony.images[0].image" [alt]="testimony.title">
                   <h6>{{testimony.title}}</h6>

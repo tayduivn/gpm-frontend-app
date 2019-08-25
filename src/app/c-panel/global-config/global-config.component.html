@@ -1,0 +1,27 @@
+<div *ngIf="globalConfig; else noData">
+
+  <div [formGroup]="form">
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Membresía</mat-label>
+        <input matInput placeholder="Membresía" formControlName="membership" type="text">
+        <mat-error>{{getError('name')}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <mat-label>Porcentaje de ganancia</mat-label>
+        <input matInput placeholder="Porcentaje de ganancia" formControlName="percentage" type="text">
+        <mat-error>{{getError('name')}}</mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-button class="mat-raised-button" type="submit" (click)="save()" [disabled]="form.invalid">
+      Save
+    </button>
+  </div>
+</div>
+<ng-template #noData>
+  <div class="d-flex justify-content-between mb-3">
+    <h3>{{message}}</h3>
+  </div>
+</ng-template>

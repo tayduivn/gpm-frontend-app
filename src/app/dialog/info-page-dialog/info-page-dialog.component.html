@@ -17,7 +17,7 @@
         <div class="form-group">
           <mat-form-field>
             <mat-label>Content</mat-label>
-            <textarea matInput formControlName="content" cols="10"></textarea>
+            <div matInput [froalaEditor] formControlName="content" id="content"></div>
             <mat-error>{{getError('content')}}</mat-error>
           </mat-form-field>
         </div>

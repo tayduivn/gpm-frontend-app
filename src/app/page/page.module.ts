@@ -28,6 +28,7 @@ import {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxLoadingModule} from 'ngx-loading';
 import {TermsComponent} from './terms/terms.component';
+import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,8 @@ import {TermsComponent} from './terms/terms.component';
     NgxLoadingModule.forRoot({}),
     MatSelectModule,
     MatButtonModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
   ]
 })
 export class PageModule {

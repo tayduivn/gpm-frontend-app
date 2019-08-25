@@ -10,7 +10,6 @@ import {InfoPageApiService} from '../../services/api/info-page-api.service';
 export class HomeComponent implements OnInit, AfterViewInit {
 
   public infoPages: any;
-  public comments = [];
   slideConfig = {
     arrows: false,
     autoplay: true,
@@ -27,6 +26,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     infinite: true,
     slidesToScroll: 1,
   };
+  backgroundImage: string;
 
   constructor(
     private infoPageApiService: InfoPageApiService

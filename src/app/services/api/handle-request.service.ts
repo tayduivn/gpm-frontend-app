@@ -96,6 +96,10 @@ export class HandleRequestService {
     allPublic: `${config.api_url}/api/public/info/page`,
     all: `${config.api_url}/api/info/page`,
   };
+  public apiGlobalConfig = {
+    allPublic: `${config.api_url}/api/public/global/config`,
+    all: `${config.api_url}/api/global/config`,
+  };
   public apiInfoImages = {
     all: `${config.api_url}/api/info/images`,
     register: `${config.api_url}/api/info/images/reg`,

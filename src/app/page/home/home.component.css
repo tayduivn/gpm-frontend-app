@@ -8,10 +8,13 @@
 
 /* header info */
 .header-info {
-  background: url("../../../assets/home/background-home.jpg") no-repeat;
-  background-size: cover;
   height: 100vh;
   position: relative;
+}
+
+.header-info img {
+  position: absolute;
+  width: 100%;
 }
 
 .header-info .header-group {
@@ -75,15 +78,6 @@
 #home-about .content div, #home-how-to .content div {
   padding: 0 0 0 40px;
   width: 60%;
-}
-
-h3.title, h1.title {
-  font-size: 2.2rem;
-}
-
-p.paragraph {
-  font-size: 1.8rem;
-  font-weight: lighter;
 }
 
 #home-about .content img {

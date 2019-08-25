@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {catchError, map, retry} from 'rxjs/operators';
+import {catchError, retry} from 'rxjs/operators';
 import {HandleRequestService} from './handle-request.service';
 import {ModelInfoPage} from '../../models/model-info-page';
 

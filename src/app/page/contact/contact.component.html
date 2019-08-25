@@ -20,13 +20,14 @@
       </div>
 
       <label for="message">Message</label>
-      <textarea type="text" id="message" rows="8" formControlName="message"></textarea>
+      <div [froalaEditor] formControlName="message" id="message"></div>
+      <!--<textarea type="text" id="message" rows="8" formControlName="message"></textarea>-->
       <div class="error-input" *ngIf="message.invalid && (message.dirty || message.touched)">
         <p *ngIf="message.errors.required">Message is required.</p>
       </div>
 
       <div class="text-right mt-3">
-        <button class="btn">Send</button>
+        <button class="btn" [disabled]="form.invalid" (click)="sendEmail()">Send</button>
       </div>
     </form>
     <div class="image">

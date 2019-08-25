@@ -47,6 +47,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Button and input */
+h3.title, h1.title {
+  font-size: 2.2rem;
+}
+
+p.paragraph {
+  font-size: 1.8rem;
+  font-weight: lighter;
+}
+
 .mat-form-field {
   margin-top: 10px;
   width: 100%;

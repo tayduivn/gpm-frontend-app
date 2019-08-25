@@ -47,6 +47,7 @@
     "jwt-decode": "^2.2.0",
     "mapbox-gl": "^1.2.1",
     "ng-stripe-checkout": "^1.0.4",
+    "ng2-animate-on-scroll": "^1.1.0",
     "ngx-loading": "^3.0.1",
     "ngx-paypal": "^5.0.0",
     "ngx-slick-carousel": "^0.4.4",

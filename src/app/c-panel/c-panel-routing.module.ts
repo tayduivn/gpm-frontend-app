@@ -20,6 +20,7 @@ import {AuthClientService} from '../services/auth-client.service';
 import {ChatsComponent} from './chats/chats.component';
 import {TagsComponent} from './tags/tags.component';
 import {InfoPageComponent} from './info-page/info-page.component';
+import {GlobalConfigComponent} from './global-config/global-config.component';
 
 const routes: Routes = [
   {
@@ -146,6 +147,14 @@ const routes: Routes = [
       {
         path: 'info/page',
         component: InfoPageComponent,
+        canActivate: [AuthServiceService],
+        data: {
+          expectedRole: ['admin']
+        },
+      },
+      {
+        path: 'global/config',
+        component: GlobalConfigComponent,
         canActivate: [AuthServiceService],
         data: {
           expectedRole: ['admin']

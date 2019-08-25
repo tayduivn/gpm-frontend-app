@@ -34,4 +34,8 @@ export class ContactComponent implements OnInit {
   get message() {
     return this.form.get('message');
   }
+
+  public sendEmail() {
+
+  }
 }

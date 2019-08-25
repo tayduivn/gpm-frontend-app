@@ -13,6 +13,16 @@
   height: 400px;
 }
 
+.header-info {
+  height: 100vh;
+  position: relative;
+}
+
+.header-info img {
+  position: absolute;
+  width: 100%;
+}
+
 .index-sidenav a {
   color: white;
 }

@@ -61,17 +61,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: this.form.value.pass,
     };
     this.userApiService.loginUser(user).subscribe((res: any) => {
-      this.firebaseAuthService.authLogIn(user.email, user.password)
-        .then(() => {
           localStorage.setItem('user', JSON.stringify(res.data.user));
           localStorage.setItem('token', res.data.token);
           this.router.navigate(['/cPanel/home']);
-        })
-        .catch((err) => {
-          console.log(err);
-          this.isLoad = false;
-          this.snackBar.open('Ocurrió error', 'ok', {duration: 2000});
-        });
     }, (err) => {
       console.log(err);
       this.isLoad = false;
