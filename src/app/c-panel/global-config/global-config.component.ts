@@ -38,6 +38,7 @@ export class GlobalConfigComponent implements OnInit {
   }
 
   save() {
+    this.form.value.id = this.globalConfig[0].id;
     this.globalConfigApiService.updateGlobalConfig(this.form.value).subscribe(() => {
       this.snackBar.open('success', 'ok', {duration: 2000});
     });
