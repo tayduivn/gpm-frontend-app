@@ -1,12 +1,22 @@
 <div class="order-order p-3">
   <div *ngIf="orders; else noData">
     <div class="status-order mb-2">
-      <button *ngFor="let item of listState" [ngClass]="{active: (stateOrder === item)}" (click)="changeStatus(item)">
-        {{ item }}
-      </button>
+      <div>
+        <button *ngFor="let item of listState" [ngClass]="{active: (stateOrder === item)}" (click)="changeStatus(item)">
+          {{ item }}
+        </button>
+      </div>
+      <div>
+        <label class="mr-3 mb-0" for="typeOrder">Select of the type order</label>
+        <select class="form-control width-reset" name="typeOrder" id="typeOrder" (change)="selectTypeOrder()"
+                [(ngModel)]="selectOrder">
+          <option value="Buyer">Buyer</option>
+          <option value="Seller">Seller</option>
+        </select>
+      </div>
     </div>
-    <div class="d-flex justify-order-between mb-3">
-      <h5 class="mb-2">List of orders</h5>
+    <div class="d-flex justify-content-center mt-3 mb-3">
+      <h4>List of orders type {{selectOrder}}</h4>
     </div>
 
     <table class="table table-order table-striped">
@@ -22,7 +32,8 @@
       <tbody>
       <tr *ngFor="let order of orders; let index = index">
         <th scope="col">{{index + 1}}</th>
-        <td>{{order.email}}</td>
+        <td *ngIf="selectOrder === 'Buyer'">{{order.user_seller.email}}</td>
+        <td *ngIf="selectOrder === 'Seller'">{{order.user_buyer.email}}</td>
         <td>{{formDate(order.order_inserted_at)}}</td>
         <td>
           <button mat-raised-button color="primary" class="mat-raised-button" (click)="openDialog(order)">

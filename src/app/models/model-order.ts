@@ -1,6 +1,8 @@
 import {ModelProduct} from './model-product';
 
 export interface ModelOrder {
+  user_buyer?: any;
+  user_seller?: any;
   phone?: any;
   postal_code?: any;
   country_code?: any;

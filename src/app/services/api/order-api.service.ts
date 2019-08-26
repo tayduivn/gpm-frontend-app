@@ -17,8 +17,8 @@ export class OrderApiService {
   ) {
   }
 
-  getOrders(status): Observable<ModelOrder> {
-    return this.http.get<ModelOrder>(`${this.request.apiOrders.all}?status=${status}`, this.request.httpJSONOptions)
+  getOrders(query = ''): Observable<ModelOrder> {
+    return this.http.get<ModelOrder>(`${this.request.apiOrders.all}${query}`, this.request.httpJSONOptions)
       .pipe(
         retry(1),
         catchError(this.request.handleError)

@@ -27,7 +27,7 @@ export class OrdersComponent implements OnInit {
   }
 
   private getOrders() {
-    this.orderApiService.getOrders(this.selectedStatus).subscribe((res: any) => this.orders = res.data);
+    this.orderApiService.getOrders(`?status=${this.selectedStatus}`).subscribe((res: any) => this.orders = res.data);
   }
 
   openDialog(order = {}) {

@@ -11,10 +11,12 @@ import {ClientOrderDialogComponent} from '../../dialog/client-order-dialog/clien
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-  orders: [ModelOrder];
-  message = 'Loading...';
-  listState = UtilsService.state;
-  stateOrder = UtilsService.state[0];
+  public orders: [ModelOrder];
+  public message = 'Loading...';
+  public listState = UtilsService.state;
+  public stateOrder = UtilsService.state[0];
+  public selectOrder = 'Buyer';
+  private user = JSON.parse(localStorage.getItem('user'));
 
   constructor(
     private orderApiService: OrderApiService,
@@ -27,7 +29,11 @@ export class OrdersComponent implements OnInit {
   }
 
   private getOrders() {
-    this.orderApiService.getOrders(this.stateOrder).subscribe((res: any) => this.orders = res.data);
+    this.orderApiService.getOrders(`?type=${this.selectOrder}&my_email=${this.user.email}`).subscribe((res: any) => {
+      this.orders = res.data;
+    }, () => {
+      this.message = 'Error loading data';
+    });
   }
 
   formDate(date: any) {
@@ -41,9 +47,17 @@ export class OrdersComponent implements OnInit {
 
   openDialog(order: any = {}) {
     order.stateOrder = this.stateOrder;
-    this.dialog.open(ClientOrderDialogComponent, {width: '700px', data: order}).afterClosed()
-      .subscribe(() => {
-        this.getOrders();
-      });
+    this.dialog.open(ClientOrderDialogComponent, {width: '700px', data: order}).afterClosed().subscribe(() => {
+      this.getOrders();
+    });
+  }
+
+  selectTypeOrder() {
+    this.orderApiService.getOrders(`?type=${this.selectOrder}&my_email=${this.user.email}`).subscribe((res: any) => {
+      console.log(res.data);
+      this.orders = res.data;
+    }, () => {
+      this.message = 'Error loading data';
+    });
   }
 }
