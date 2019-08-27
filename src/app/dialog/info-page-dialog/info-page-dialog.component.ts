@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from '@angular/material';
 import {UtilsService} from '../../services/utils.service';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
@@ -22,6 +22,7 @@ export class InfoPageDialogComponent implements OnInit {
   public sections = [];
   private formData = new FormData();
   private fileToUpload = [];
+  private readonly data: any;
 
   constructor(
     private fb: FormBuilder,
@@ -32,11 +33,15 @@ export class InfoPageDialogComponent implements OnInit {
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) data
   ) {
-    this.startDialog(data);
+    this.data = data;
   }
 
-  private startDialog(data) {
-    if (Object.entries(data).length === 0 && data.constructor === Object) {
+  ngOnInit(): void {
+    this.startDialog();
+  }
+
+  private startDialog() {
+    if (Object.entries(this.data).length === 0 && this.data.constructor === Object) {
       this.infoPage = null;
       this.form = this.fb.group({
         title: ['', [Validators.required]],
@@ -45,12 +50,12 @@ export class InfoPageDialogComponent implements OnInit {
         section: ['', [Validators.required]]
       });
     } else {
-      this.infoPage = data;
+      this.infoPage = this.data;
       this.changePage(this.infoPage.page);
-      this.modalType = data.modalType;
+      this.modalType = this.data.modalType;
       this.form = this.fb.group({
         title: [this.infoPage.title, [Validators.required]],
-        content: [this.infoPage.content, [Validators.required]],
+        content:  new FormControl(this.infoPage.content, [Validators.required]),
         page: [this.infoPage.page, [Validators.required]],
         section: [this.infoPage.section, [Validators.required]]
       });
@@ -59,9 +64,6 @@ export class InfoPageDialogComponent implements OnInit {
       this.formImageData = this.fb.group({values: this.fb.array([])});
     }
     this.formImage = this.fb.group(({size: ['', [Validators.required]]}));
-  }
-
-  ngOnInit(): void {
   }
 
   public getError(controlName: string): string {
@@ -170,7 +172,12 @@ export class InfoPageDialogComponent implements OnInit {
         ];
         break;
       case 'About':
-        this.sections = [];
+        this.sections = [
+          {id: 'header', value: 'Header'},
+          {id: 'what_is', value: 'What is'},
+          {id: 'how_to', value: 'How to'},
+          {id: 'benefits', value: 'benefits'},
+        ];
         break;
       case 'Membership':
         this.sections = [];

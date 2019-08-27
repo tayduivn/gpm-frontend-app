@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  getError(controlName: string) {
-    return UtilsService.getError(this.form, controlName);
+  getError(form, controlName: string) {
+    return UtilsService.getError(form, controlName);
   }
 }

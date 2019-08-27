@@ -1,32 +1,18 @@
 <div id="content-parent" *ngIf="infoPages">
   <div id="header-about">
-    <img *ngIf="infoPages.header" src="../../../assets/home/background-home.jpg" [alt]="infoPages?.header[0].title">
+    <img *ngIf="infoPages.header" [src]="infoPages?.header.images[0].image" [alt]="infoPages?.header.title">
     <div class="image"></div>
   </div>
 
   <main id="about">
-    <div id="about-us">
+    <div id="about-us" data-aos="fade-up">
       <section class="what-is">
         <div class="wrapper">
-          <h2 *ngIf="infoPages.what_is" class="mb-5 title">What is Global Pulses Market?</h2>
+          <h2 *ngIf="infoPages.what_is" class="mb-5 title">{{infoPages.what_is[0].title}}</h2>
           <div class="content">
-            <div *ngIf="infoPages.what_is" class="info paragraph" [innerHTML]="infoPages.what_is[0].content">
-              <p>Somos una startup de jóvenes emprendedores, dedicados a optimizar la comercialización electrónica de
-                granos.
-                Nuestro propósito es minimizar las brechas de información y comunicación en toda la cadena comercial
-                sobre
-                precios de oferta y demanda; análisis y tendencias, en un mercado como el de las specialities.</p>
-              <p>GPM tiene como MISIÓN generar las mejores oportunidades de negocios para nuestros usuarios. Esto lo
-                logramos
-                gracias al gran equipo de profesionales, al empoderamiento de la tecnología y a la autonomía de todos
-                los
-                actores participes en la comercialización de los productos.</p>
-              <p>Gracias a una mirada distinta del mercado tradicional, con el compromiso de nuestros usuarios y con una
-                plataforma robusta mejoraremos la capacidad de negocios en plataformas digitales del sector
-                agropecuario.</p>
-            </div>
+            <div *ngIf="infoPages.what_is" class="info paragraph" [innerHTML]="infoPages.what_is[0].content"></div>
             <div class="image">
-              <img src="../../../assets/logo.png" alt="logo">
+              <img [src]="infoPages.what_is[0].images[0].image" [alt]="infoPages.what_is[0].title">
             </div>
           </div>
         </div>
@@ -53,44 +39,26 @@
       <hr>
       <section class="sing-up">
         <div class="wrapper">
-          <p>Sign up for a free Heroku account and discover the GPM experience for yourself.</p>
-          <a href="/#" class="btn">Sign up for free account</a>
+          <p>Sign up for a free account and discover the GPM experience for yourself.</p>
+          <a routerLink="/index/register" class="btn">Sign up for free account</a>
         </div>
       </section>
     </div>
     <hr>
-    <div id="how-to">
+    <div id="how-to" data-aos="fade-up">
       <section class="how-to">
         <div class="wrapper">
-          <h2 *ngIf="infoPages.how_to" class="mb-5 title">How do we do it?</h2>
-          <p *ngIf="infoPages.how_to" class="paragraph" [innerHTML]="infoPages.how_to[0].content">
-            A través de una gran red de contactos generados en las principales ferias de alimentos
-            por todo el mundo.
-            Donde nos enfocamos en los clientes que vision a largo plazo, con intensiones de generar fuertes vínculos
-            comerciales.
-            Por medio de un sistema de oferta y demanda se podrá consultar el precio de mercado de venta o compra de
-            cada producto. Luego de cada transacción realizada, los usuarios podrán calificar su experiencia, generando
-            un perfil para cada usuario según su comportamiento.
-          </p>
+          <h2 *ngIf="infoPages.how_to" class="mb-5 title">{{infoPages.how_to[0].title}}</h2>
+          <div *ngIf="infoPages.how_to" class="paragraph" [innerHTML]="infoPages.how_to[0].content"></div>
         </div>
       </section>
     </div>
     <hr>
-    <div id="benefits">
+    <div id="benefits" data-aos="fade-up">
       <section class="benefits">
         <div class="wrapper">
           <h2 *ngIf="infoPages.benefits" class="mb-4 title">{{infoPages.benefits[0].title}}</h2>
-          <ul *ngIf="infoPages.benefits" class="paragraph" [innerHTML]="infoPages.benefits[0].content">
-            <li>Incorporar libremente todo tipo de producto de specialities según la oferta o demanda.</li>
-            <li>Gestionar comunicaciones en línea a través de la plataforma.</li>
-            <li>Comercializar productos orgánicos e inorgánicos.</li>
-            <li>Mediante una membresía los usuarios podrán obtener información de alta calidad como: tendencias,
-              novedades, ofertas, entre otros.
-            </li>
-            <li>Contamos con una calculadora de fletes internacionales asociados a empresas marítimas, terrestres y
-              aéreos.
-            </li>
-          </ul>
+          <div *ngIf="infoPages.benefits" class="paragraph" [innerHTML]="infoPages.benefits[0].content"></div>
         </div>
       </section>
     </div>

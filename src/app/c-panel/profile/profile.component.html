@@ -5,14 +5,14 @@
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput placeholder="Email" formControlName="email" type="email">
-        <mat-error>{{getError('email')}}</mat-error>
+        <mat-error>{{getError(form, 'email')}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
       <mat-form-field>
         <mat-label>Phone</mat-label>
         <input matInput placeholder="Phone" formControlName="phone" type="text">
-        <mat-error>{{getError('phone')}}</mat-error>
+        <mat-error>{{getError(form, 'phone')}}</mat-error>
       </mat-form-field>
     </div>
     <div class="text-right">
@@ -27,7 +27,7 @@
         <mat-label>Actual Password</mat-label>
         <input matInput placeholder="Actual Password" formControlName="oldPassword" type="password">
         <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
-        <mat-error>{{getError('oldPassword')}}</mat-error>
+        <mat-error>{{getError(formPass, 'oldPassword')}}</mat-error>
       </mat-form-field>
     </div>
     <div class="form-group">
@@ -35,7 +35,7 @@
         <mat-label>New Password</mat-label>
         <input matInput placeholder="New Password" formControlName="newPassword" type="password">
         <mat-icon matSuffix (click)="hidePass = !hidePassNew">{{hidePassNew ? 'visibility_off' : 'visibility'}}</mat-icon>
-        <mat-error>{{getError('newPassword')}}</mat-error>
+        <mat-error>{{getError(formPass, 'newPassword')}}</mat-error>
       </mat-form-field>
     </div>
     <div class="text-right">

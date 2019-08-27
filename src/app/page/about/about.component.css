@@ -60,7 +60,7 @@
 
 #about-us .what-is .wrapper .image {
   flex: 60%;
-  padding-right: 10%;
+  padding-left: 10%;
 }
 
 /* Social */
@@ -119,11 +119,25 @@
   font-size: 1.1rem;
 }
 
+/* Sing up */
 #about-us .sing-up .wrapper {
   margin: 0 auto;
   max-width: 1360px;
   padding: 30px 0;
   text-align: center;
+}
+
+#about-us .sing-up .wrapper .btn {
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1em 0.9em;
+  text-transform: uppercase;
+  transition: background 0.1s linear 0s;
+}
+
+#about-us .sing-up .wrapper .btn:hover {
+  background: var(--buttom-hover);
 }
 
 /* How do we do it */

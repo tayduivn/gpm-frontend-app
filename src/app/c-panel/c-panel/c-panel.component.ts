@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FirebaseAuthService} from '../../services/firebase/firebase-auth.service';
 import {Router} from '@angular/router';
+import jQuery from 'jquery';
 
 @Component({
   selector: 'app-c-panel',
@@ -16,10 +17,10 @@ export class CPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*jQuery('.sub-menu ul').hide();
-    jQuery(".sub-menu a").click(function () {
-      jQuery(this).parent(".sub-menu").children("ul").slideToggle("100");
-      jQuery(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
+    jQuery('.sub-menu ul').hide();
+    jQuery('.sub-menu a').click(function () {
+      jQuery(this).parent('.sub-menu').children('ul').slideToggle('100');
+      jQuery(this).find('.right').toggleClass('fa-caret-up fa-caret-down');
     });
     const menuIconEl = jQuery('.menu-icon');
     const sidenavEl = jQuery('.sidenav');
@@ -44,18 +45,18 @@ export class CPanelComponent implements OnInit {
       toggleClassName(sidenavEl, 'active');
     });
     // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
+    window.onclick = function (event: any) {
       if (!event.target.matches('.dropbtn')) {
-        const dropDowns = document.getElementsByClassName("dropdown-content")
-        let i
+        const dropDowns = document.getElementsByClassName('dropdown-content');
+        let i;
         for (i = 0; i < dropDowns.length; i++) {
-          const openDropdown = dropDowns[i]
+          const openDropdown = dropDowns[i];
           if (openDropdown.classList.contains('show')) {
             openDropdown.classList.remove('show');
           }
         }
       }
-    }*/
+    };
   }
 
   dropdownShow() {
