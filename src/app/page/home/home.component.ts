@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import * as AOS from '../../../assets/js/aos.js';
+import * as AOS from 'aos';
 import {InfoPageApiService} from '../../services/api/info-page-api.service';
 
 @Component({
@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     infinite: true,
     slidesToScroll: 1,
   };
-  backgroundImage: string;
 
   constructor(
     private infoPageApiService: InfoPageApiService
@@ -36,10 +35,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.infoPageApiService.getInfoPages('?page=Home').subscribe((res: any) => {
       this.infoPages = res.data;
-      AOS.init({
-        disable: 'phone',
-        once: true
-      });
+      AOS.init();
     });
   }
 

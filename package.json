@@ -36,6 +36,7 @@
     "@ngrx/store": "^7.4.0",
     "@types/lowdb": "^1.0.6",
     "angular-froala-wysiwyg": "^3.0.0-rc.2-1",
+    "animate.css": "^3.7.2",
     "aos": "^3.0.0-beta.6",
     "bootstrap": "^4.2.1",
     "braintree-web": "^3.50.1",

@@ -29,7 +29,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgxLoadingModule} from 'ngx-loading';
 import {TermsComponent} from './terms/terms.component';
 import {FroalaEditorModule, FroalaViewModule} from 'angular-froala-wysiwyg';
-import {AnimateOnScrollModule} from 'ng2-animate-on-scroll';
 
 @NgModule({
   declarations: [
@@ -64,7 +63,6 @@ import {AnimateOnScrollModule} from 'ng2-animate-on-scroll';
     MatButtonModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot(),
-    AnimateOnScrollModule.forRoot()
   ]
 })
 export class PageModule {

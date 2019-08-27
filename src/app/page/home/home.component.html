@@ -9,7 +9,7 @@
   </div>
 
   <main id="home">
-    <section id="home-about">
+    <section id="home-about" data-aos="fade-up">
       <div class="content">
         <img [src]="infoPages.about[0].images[0].image" [alt]="infoPages.title">
         <div>
@@ -18,7 +18,7 @@
         </div>
       </div>
     </section>
-    <section id="home-trading">
+    <section id="home-trading" data-aos="fade-up">
       <div class="content">
         <div class="trading-info">
           <h3 class="title">{{infoPages.trading[0].title}}</h3>
@@ -35,7 +35,7 @@
         </div>
       </div>
     </section>
-    <section id="home-how-to">
+    <section id="home-how-to" data-aos="fade-up">
       <div class="content">
         <div class="how-to-image">
           <img [src]="infoPages.how_to[0].images[0].image" [alt]="infoPages.how_to[0].title">
@@ -46,25 +46,27 @@
         </div>
       </div>
     </section>
-    <section id="home-membership">
+    <section id="home-membership" data-aos="fade-up">
       <div class="content">
         <h3 class="title">{{infoPages.membership[0].title}}</h3>
         <img [src]="infoPages.membership[0].images[0].image" [alt]="infoPages.membership[0].title">
         <p class="paragraph" [innerHTML]="infoPages.membership[0].content"></p>
       </div>
     </section>
-    <section id="home-payments">
+    <section id="home-payments" data-aos="fade-up">
       <div class="content">
         <h4 class="title">Accept Payments</h4>
         <div class="payments-info">
-          <img src="../../../assets/logo.png" alt="member">
-          <img src="../../../assets/logo.png" alt="member">
-          <img src="../../../assets/logo.png" alt="member">
-          <img src="../../../assets/logo.png" alt="member">
+          <img src="../../../assets/payments_icon/American_Express_icon.jpg" alt="card">
+          <img src="../../../assets/payments_icon/Discover_icon.jpg" alt="card">
+          <img src="../../../assets/payments_icon/JCB_icon.jpg" alt="card">
+          <img src="../../../assets/payments_icon/MasterdCard_icon.jpg" alt="card">
+          <img src="../../../assets/payments_icon/PayPal_icon.jpg" alt="card">
+          <img src="../../../assets/payments_icon/Visa_icon.jpg" alt="card">
         </div>
       </div>
     </section>
-    <section id="home-testimony" data-aos="fade-up" data-aos-once="true">
+    <section id="home-testimony" data-aos="fade-up">
       <div class="content">
         <h3 class="title">Our users</h3>
         <div class="testimony-slick">
