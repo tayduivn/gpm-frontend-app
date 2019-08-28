@@ -1,8 +1,8 @@
 'use strict'
 
-const apiUrl = 'http://gpm-backend'
+/*const apiUrl = 'http://gpm-backend'*/
 const socketUrl = 'http://127.0.0.1:3120'
-/*const apiUrl = 'https://backend.appgpm.com'*/
+const apiUrl = 'https://backend.appgpm.com'
 /*const apiUrl = 'https://gpmbackend.herokuapp.com'*/
 const config = {
   socket_url: socketUrl,
