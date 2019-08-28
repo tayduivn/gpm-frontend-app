@@ -10,8 +10,8 @@ import {MatSnackBar} from '@angular/material';
 export class FirebaseService {
   constructor(
     public db: AngularFirestore,
-    private dbStorage: AngularFireStorage,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private dbStorage: AngularFireStorage
   ) {
   }
 

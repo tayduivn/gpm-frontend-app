@@ -5,7 +5,6 @@ import {MatDialog, MatSnackBar} from '@angular/material';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserApiService} from '../../services/api/user-api.service';
 import {ForgotDialogComponent} from '../../dialog/forgot-dialog/forgot-dialog.component';
-import {FirebaseService} from '../../services/firebase/firebase.service';
 import {CartApiService} from '../../services/api/cart-api.service';
 
 @Component({
@@ -25,7 +24,6 @@ export class LoginComponent implements OnInit {
     private firebaseAuthService: FirebaseAuthService,
     private userApiService: UserApiService,
     private cartApiService: CartApiService,
-    private firebaseService: FirebaseService,
     private router: Router,
   ) {
   }
@@ -94,11 +92,13 @@ export class LoginComponent implements OnInit {
     this.userApiService.loginUser(user).subscribe((res: any) => {
       this.firebaseAuthService.authLogIn(user.email, user.password)
         .then(() => {
+          console.log(res);
+          localStorage.setItem('token', res.data.token);
+          localStorage.setItem('user', JSON.stringify(res.data.user));
+          console.log(localStorage.getItem('token'));
           this.cartApiService.getCartStatus(res.data.user.id).subscribe((resStatus: any) => {
             console.log(resStatus);
             localStorage.setItem('cartId', resStatus.data[0].cart_id);
-            localStorage.setItem('user', JSON.stringify(res.data.user));
-            localStorage.setItem('token', res.data.token);
             this.router.navigate(['/client/home']);
           });
         })
