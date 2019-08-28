@@ -9,7 +9,9 @@
     <thead>
     <tr>
       <th scope="col" width="10px">Nº</th>
-      <th scope="col">Name</th>
+      <th scope="col">Title</th>
+      <th scope="col">Page</th>
+      <th scope="col">Section</th>
       <th scope="col" width="10"></th>
       <th scope="col" width="10"></th>
       <th scope="col" width="10"></th>
@@ -19,6 +21,8 @@
     <tr *ngFor="let infoPage of infoPages; let index = index">
       <th scope="col">{{index + 1}}</th>
       <td>{{infoPage.title}}</td>
+      <td>{{infoPage.page}}</td>
+      <td>{{infoPage.section}}</td>
       <td>
         <button class="btn btn-sm btn-primary" (click)="openDialog(infoPage, 'images')">Images</button>
       </td>

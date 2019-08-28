@@ -9,6 +9,11 @@
   width: 150px;
 }
 
+.map-payment #map {
+  height: 300px;
+  width: 100%;
+}
+
 @media screen and (min-width: 1360px) {
 
 }

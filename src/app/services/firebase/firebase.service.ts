@@ -58,6 +58,7 @@ export class FirebaseService {
       this.db.collection('user').add({
         email: value.email,
         role_id: value.role_id,
+        status: 'waiting',
         token: 'yesToken',
         date: new Date().toISOString().substring(0, 10)
       })

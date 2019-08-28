@@ -31,37 +31,45 @@
             <mat-error>{{getError('last_name')}}</mat-error>
           </mat-form-field>
         </div>
+        <div class="map-payment">
+          <div class="d-flex align-items-center mb-4">
+            <h6>Search</h6>
+            <div id='geocoder' class='geocoder ml-3'></div>
+          </div>
+          <div id='map'></div>
+          <h6>Location: {{this.location?.address}}</h6>
+        </div>
         <div class="form-group">
           <mat-form-field>
-            <mat-label>Dirección</mat-label>
+            <mat-label>Address</mat-label>
             <input matInput placeholder="Dirección" formControlName="address" type="text">
             <mat-error>{{getError('address')}}</mat-error>
           </mat-form-field>
         </div>
         <div class="form-group">
           <mat-form-field>
-            <mat-label>País</mat-label>
-            <input matInput placeholder="País" formControlName="country" type="text">
-            <mat-error>{{getError('country')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Estado</mat-label>
-            <input matInput placeholder="Estado" formControlName="state" type="text">
-            <mat-error>{{getError('state')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Ciudad</mat-label>
+            <mat-label>City</mat-label>
             <input matInput placeholder="Ciudad" formControlName="city" type="text">
             <mat-error>{{getError('city')}}</mat-error>
           </mat-form-field>
         </div>
         <div class="form-group">
           <mat-form-field>
-            <mat-label>Código Postal</mat-label>
+            <mat-label>State</mat-label>
+            <input matInput placeholder="Estado" formControlName="state" type="text">
+            <mat-error>{{getError('state')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Country</mat-label>
+            <input matInput placeholder="País" formControlName="country" type="text">
+            <mat-error>{{getError('country')}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Postal Code</mat-label>
             <input matInput placeholder="Código Postal" formControlName="postal_code" type="text">
             <mat-error>{{getError('postal_code')}}</mat-error>
           </mat-form-field>

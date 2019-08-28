@@ -5,28 +5,30 @@
   <div class="content-form">
     <h5 class="mb-4">Sing up with Email</h5>
     <form [formGroup]="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" formControlName="email" type="email">
-        <mat-error>{{getError('email')}}</mat-error>
-      </mat-form-field>
+      <label for="email-contact">Email</label>
+      <input type="email" id="email-contact" formControlName="email">
+      <div class="error-input" *ngIf="email.invalid && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required" class="error-input">Email is required.</p>
+        <p *ngIf="email.errors.email">Email is incorrect.</p>
+      </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" formControlName="pass" type="password"
-               [type]="hide ? 'password' : 'text'">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        <mat-error>{{getError('pass')}}</mat-error>
-      </mat-form-field>
+      <label for="pass">Password</label>
+      <input type="password" id="pass" formControlName="pass">
+      <div class="error-input" *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+        {{pass.errors | json}}
+        <p *ngIf="pass.errors.required">Pass is required.</p>
+      </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Type user</mat-label>
-        <mat-select formControlName="role">
-          <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
-        </mat-select>
-        <mat-error>{{getError('role')}}</mat-error>
-      </mat-form-field>
-      <button class="btn" (click)="doRegister()" [disabled]="form.invalid">
+      <label for="role">Type user</label>
+      <select class="form-control" name="role" id="role" formControlName="role">
+        <option *ngFor="let role of roles" [value]="role.id">{{role.name}}</option>
+      </select>
+      <div class="error-input" *ngIf="role.invalid && (role.dirty || role.touched)">
+        {{role.errors | json}}
+        <p *ngIf="role.errors.required">Pass is required.</p>
+      </div>
+
+      <button class="btn mt-4" (click)="doRegister()" [disabled]="form.invalid">
         Register
       </button>
     </form>

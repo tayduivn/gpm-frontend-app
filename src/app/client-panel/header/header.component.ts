@@ -28,8 +28,12 @@ export class HeaderComponent implements OnInit {
 
   private firebaseRequest() {
     this.firebaseService.getUser(this.user.firebase_id).subscribe((res: any) => {
-      if (res && res.count_cart !== undefined) {
+      console.log(res);
+      if (res && res.status !== undefined) {
         this.status = res.status;
+        if (this.status === 'waiting') {
+          this.router.navigate(['/client/profile']);
+        }
       }
     });
   }
@@ -85,8 +89,7 @@ export class HeaderComponent implements OnInit {
     this.openMenu++;
   }
 
-  closeNav(location = '') {
-    /*if (location !== '') this.$router.push(location)*/
+  closeNav() {
     this.openMenu = 0;
     document.getElementById('mySidenav').style.left = '-300px';
   }

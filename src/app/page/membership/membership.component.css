@@ -7,6 +7,14 @@ header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+#header-membership {
+  position: relative;
+}
+
+#header-membership img {
+  width: 100%;
+}
+
 /* Membership */
 #membership {
   width: 100%;
@@ -25,17 +33,25 @@ header {
 }
 
 #membership .pricing .list-pricing {
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   max-width: 600px;
 }
 
 #membership .pricing .list-pricing li.content {
-  background: #fff;
-  border: 2px solid #E5E5E5;
-  border-radius: 4px;
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0);
-  padding: 12px 50px;
-  text-align: center;
+  background-color: #2d96c8;
+  -webkit-box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2);
+  color: #fff;
+  height: auto;
+  min-width: 400px;
+  padding: 60px 35px;
+  width: 28%;
+}
+
+#membership .pricing .list-pricing li.content h5 {
+  font-size: 2.0rem;
 }
 
 #membership .pricing .list-pricing img {
@@ -44,7 +60,34 @@ header {
 }
 
 #membership .pricing .list-pricing .list-benefits li {
+  font-weight: 600;
   letter-spacing: 0.05rem;
-  line-height: 2rem;
-  list-style: disc;
+  line-height: 1.5rem;
+  padding-bottom: 20px;
+  text-align: left;
+}
+
+#membership .pricing .list-pricing .list-benefits li:before {
+  content: "\f00c"; /* FontAwesome Unicode */
+  display: inline-block;
+  font-family: FontAwesome;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+}
+
+#membership .btn {
+  align-items: center;
+  background-color: var(--color-error);
+  border-radius: 35px;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 50px;
+  justify-content: center;
+  padding: 15px 30px;
+  transition: all ease-in .5s;
+}
+
+#membership .btn:hover {
+  background-color: var(--buttom-hover-second);
 }

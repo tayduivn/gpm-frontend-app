@@ -70,10 +70,10 @@
           <div class="p-1" *ngFor="let image of infoPage.images; let i = index">
             <hr class="mb-3">
             <div class="row">
-              <div class="image-content col-md-4 col-12">
-                <img [src]="infoPage.images[i].image" [alt]="infoPage.images[i].id_image">
+              <div class="image-content col-md-6 col-12">
+                <img class="img-fluid" [src]="infoPage.images[i].image" [alt]="infoPage.images[i].id_image">
               </div>
-              <div class="col-md-8 col-12">
+              <div class="col-md-6 col-12">
                 <div class="form-group">
                   <label>Image</label>
                   <input type="file" class="form-control" accept="image/*" (change)="uploadImage($event)">

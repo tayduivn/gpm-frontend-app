@@ -23,6 +23,24 @@
   top: -1px;
 }
 
+#register label {
+  margin-top: 15px;
+}
+
+#register input[type="password"], #register input[type="email"] {
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9dadc;
+  border-radius: 0;
+  box-shadow: 0 0 4px rgba(110, 91, 170, 0);
+  height: 40px;
+  padding: 6px 12px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  width: 100%;
+}
+
 #register input[type="checkbox"] {
   -moz-appearance: none;
   -webkit-appearance: none;

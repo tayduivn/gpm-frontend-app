@@ -18,7 +18,7 @@ export class MapService {
   ) {
   }
 
-  public setMap(center = [-58.38194, -34.59972], zoom = 13) {
+  public setMap(center = [-58.38194, -34.59972], zoom = 13, showCurrent = false) {
     const self = this;
     Object.getOwnPropertyDescriptor(mapboxgl, 'accessToken').set(this.token);
     this.map = new mapboxgl.Map({
@@ -41,6 +41,15 @@ export class MapService {
     });
 
     this.map.on('click', ev => this.setMarker(ev.lngLat.lng, ev.lngLat.lat));
+
+    if (showCurrent) {
+      this.map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      }));
+    }
   }
 
   public setMarker(lng, lat) {

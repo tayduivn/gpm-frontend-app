@@ -8,6 +8,7 @@ import {ConfirmDialogComponent} from '../../dialog/confirm-dialog/confirm-dialog
 import {Router} from '@angular/router';
 import {FirebaseAuthService} from '../../services/firebase/firebase-auth.service';
 import {FirebaseService} from '../../services/firebase/firebase.service';
+import {MapService} from '../../services/map.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,13 +16,14 @@ import {FirebaseService} from '../../services/firebase/firebase.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  form: FormGroup;
-  formPass: FormGroup;
-  formBank: FormGroup;
-  hidePass = true;
-  hidePassNew = true;
-  user: ModelUser;
-  message = 'Loading...';
+  public form: FormGroup;
+  public formPass: FormGroup;
+  public formBank: FormGroup;
+  public hidePass = true;
+  public hidePassNew = true;
+  public user: ModelUser;
+  public message = 'Loading...';
+  public location: any = {address: ''};
   private formData = new FormData();
   private fileToUpload: any;
 
@@ -32,6 +34,7 @@ export class ProfileComponent implements OnInit {
     private userApiService: UserApiService,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
+    private mapService: MapService,
     private router: Router,
   ) {
   }
@@ -50,12 +53,67 @@ export class ProfileComponent implements OnInit {
     this.userApiService.getUsers(query).subscribe((res: any) => {
       this.user = res.data[0];
       this.setForm();
+      setTimeout(() => this.setMap(), 1);
+    });
+  }
+
+  private setMap() {
+    this.mapService.setMap(undefined, undefined, true);
+    this.mapService.geocoder.on('result', ev => {
+      this.location.address = 'Loading...';
+      const lng = ev.result.geometry.coordinates[0];
+      const lat = ev.result.geometry.coordinates[1];
+      this.mapService.getLocationName(lng, lat).subscribe((res: any) => {
+        this.location.map_lng = lng;
+        this.location.map_lat = lat;
+        console.log(lng);
+        console.log(lat);
+        this.setFormValuesLocation(res);
+        this.location.address = res.features[2].place_name;
+      }, () => {
+        alert('Error cargando datos');
+      });
+    });
+
+    this.mapService.map.on('click', ev => {
+      this.location.address = 'Loading...';
+      const lng = ev.lngLat.lng;
+      const lat = ev.lngLat.lat;
+      this.mapService.getLocationName(lng, lat).subscribe((res: any) => {
+        this.location.map_lng = lng;
+        this.location.map_lat = lat;
+        this.setFormValuesLocation(res);
+      }, () => {
+        alert('Error cargando datos');
+      });
+    });
+  }
+
+  private setFormValuesLocation(res: any) {
+    console.log(res);
+    res.features.forEach((item) => {
+      if (item.place_type[0] === 'poi' || item.place_type[0] === 'address') {
+        this.form.get('address').patchValue(item.place_name);
+        this.location.address = item.place_name;
+      }
+      if (item.place_type[0] === 'postcode') {
+        this.form.get('postal_code').patchValue(item.text);
+      }
+      if (item.place_type[0] === 'place') {
+        this.form.get('city').patchValue(item.text);
+      }
+      if (item.place_type[0] === 'region') {
+        this.form.get('state').patchValue(item.text);
+      }
+      if (item.place_type[0] === 'country') {
+        this.form.get('country').patchValue(item.text);
+      }
     });
   }
 
   private setForm() {
     this.form = this.fb.group({
-      email: new FormControl(this.user.email, [Validators.required, Validators.email]),
+      email: new FormControl({value: this.user.email, disabled: true}, [Validators.required, Validators.email]),
       phone: new FormControl(this.user.phone, [Validators.required]),
       first_name: new FormControl(this.user.first_name, [Validators.required]),
       last_name: new FormControl(this.user.last_name, [Validators.required]),

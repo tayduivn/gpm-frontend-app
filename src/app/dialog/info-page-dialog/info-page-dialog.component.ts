@@ -180,7 +180,9 @@ export class InfoPageDialogComponent implements OnInit {
         ];
         break;
       case 'Membership':
-        this.sections = [];
+        this.sections = [
+          {id: 'info', value: 'Info'},
+        ];
         break;
       default:
         this.sections = [];

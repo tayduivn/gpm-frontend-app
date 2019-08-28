@@ -8,7 +8,7 @@ import {InfoPageApiService} from '../../services/api/info-page-api.service';
   styleUrls: ['../../../assets/js/aos.css', './about.component.css']
 })
 export class AboutComponent implements OnInit {
-  infoPages: any;
+  public infoPages: any;
 
   constructor(
     private infoPageApiService: InfoPageApiService

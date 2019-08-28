@@ -1,7 +1,6 @@
 /* header info */
 #header-about {
-  background-color: #8abae2;
-  background-image: linear-gradient(to bottom, var(--gpm-third), #8abae2);
+  background-image: linear-gradient(to bottom, var(--gpm-third), white);
   background-size: cover;
   position: relative;
   width: 100%
@@ -11,16 +10,6 @@
   background: url("../../../assets/logo.png") no-repeat center;
   background-size: 300px;
   height: 400px;
-}
-
-.header-info {
-  height: 100vh;
-  position: relative;
-}
-
-.header-info img {
-  position: absolute;
-  width: 100%;
 }
 
 .index-sidenav a {
@@ -52,6 +41,7 @@
 
 #about-us .what-is .wrapper .content {
   display: flex;
+  flex-direction: column;
 }
 
 #about-us .what-is .wrapper .info {
@@ -60,7 +50,6 @@
 
 #about-us .what-is .wrapper .image {
   flex: 60%;
-  padding-left: 10%;
 }
 
 /* Social */

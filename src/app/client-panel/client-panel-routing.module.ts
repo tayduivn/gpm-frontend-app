@@ -23,6 +23,9 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'home',
+        data: {
+          expectedRole: ['client']
+        },
       },
       {
         path: 'home',

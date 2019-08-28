@@ -6,7 +6,6 @@ import {UserApiService} from '../../services/api/user-api.service';
 import {Router} from '@angular/router';
 import {FirebaseService} from '../../services/firebase/firebase.service';
 import {RoleApiService} from '../../services/api/role-api.service';
-import {UtilsService} from '../../services/utils.service';
 
 @Component({
   selector: 'app-register',
@@ -38,13 +37,10 @@ export class RegisterComponent implements OnInit {
   }
 
   private setForm() {
-    const email = localStorage.getItem('email-client-login') ? localStorage.getItem('email-client-login') : '';
-    const login = localStorage.getItem('pass-client-login') ? localStorage.getItem('pass-client-login') : '';
     this.form = this.fb.group({
-      email: new FormControl(email, [Validators.required, Validators.email]),
-      pass: new FormControl(login, [Validators.required, Validators.minLength(6)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      pass: new FormControl('', [Validators.required, Validators.minLength(6)]),
       role: new FormControl('', [Validators.required]),
-      remember: new FormControl(true)
     });
   }
 
@@ -132,7 +128,16 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  public getError(controlName: string): string {
-    return UtilsService.getError(this.form, controlName);
+  /* Get Errors */
+  get email() {
+    return this.form.get('email');
+  }
+
+  get pass() {
+    return this.form.get('pass');
+  }
+
+  get role() {
+    return this.form.get('role');
   }
 }

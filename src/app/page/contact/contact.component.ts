@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
+import * as AOS from 'aos';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['../../../assets/js/aos.css', './contact.component.css']
 })
 export class ContactComponent implements OnInit {
   form: FormGroup;
@@ -15,6 +16,9 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+    AOS.init({
+      once: true
+    });
     this.form = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       name: new FormControl('', [Validators.required]),
