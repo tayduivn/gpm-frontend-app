@@ -26,7 +26,7 @@ export class ProductCategoryApiService {
    * ?id=${id}&category=true&limit=15&order=RAND
    */
   getProductCategories(query = ''): Observable<ModelProductCategory> {
-    return this.http.get<ModelProductCategory>(`${this.request.apiProductsCategories.all}${query}`, this.request.httpJSONOptions)
+    return this.http.get<ModelProductCategory>(`${this.request.apiProductsCategories.all}${query}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -34,7 +34,7 @@ export class ProductCategoryApiService {
   }
 
   getProductCategory(id): Observable<ModelProductCategory> {
-    return this.http.get<ModelProductCategory>(`${this.request.apiProductsCategories.all}?id=${id}`, this.request.httpJSONOptions)
+    return this.http.get<ModelProductCategory>(`${this.request.apiProductsCategories.all}?id=${id}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -43,7 +43,7 @@ export class ProductCategoryApiService {
 
   createProductCategory(model): Observable<ModelProductCategory> {
     console.log(model);
-    return this.http.post<ModelProductCategory>(this.request.apiProductsCategories.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelProductCategory>(this.request.apiProductsCategories.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -51,7 +51,7 @@ export class ProductCategoryApiService {
   }
 
   updateProductCategory(model): Observable<ModelProductCategory> {
-    return this.http.put<ModelProductCategory>(this.request.apiProductsCategories.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelProductCategory>(this.request.apiProductsCategories.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -59,8 +59,8 @@ export class ProductCategoryApiService {
   }
 
   deleteProductCategory(model) {
-    this.request.httpJSONOptions.body = model;
-    return this.http.delete<ModelProductCategory>(this.request.apiProductsCategories.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = model;
+    return this.http.delete<ModelProductCategory>(this.request.apiProductsCategories.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

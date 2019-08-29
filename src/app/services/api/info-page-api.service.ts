@@ -34,7 +34,7 @@ export class InfoPageApiService {
   }
 
   createInfoPage(model): Observable<ModelInfoPage> {
-    return this.http.post<ModelInfoPage>(this.request.apiInfoPages.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelInfoPage>(this.request.apiInfoPages.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class InfoPageApiService {
   }
 
   updateInfoPage(model): Observable<ModelInfoPage> {
-    return this.http.put<ModelInfoPage>(this.request.apiInfoPages.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelInfoPage>(this.request.apiInfoPages.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class InfoPageApiService {
   }
 
   deleteInfoPage(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelInfoPage>(this.request.apiInfoPages.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelInfoPage>(this.request.apiInfoPages.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

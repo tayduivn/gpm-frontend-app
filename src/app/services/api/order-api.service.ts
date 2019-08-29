@@ -18,7 +18,7 @@ export class OrderApiService {
   }
 
   getOrders(query = ''): Observable<ModelOrder> {
-    return this.http.get<ModelOrder>(`${this.request.apiOrders.all}${query}`, this.request.httpJSONOptions)
+    return this.http.get<ModelOrder>(`${this.request.apiOrders.all}${query}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -26,7 +26,7 @@ export class OrderApiService {
   }
 
   getActiveOrder(active): Observable<ModelOrder> {
-    return this.http.get<ModelOrder>(`${this.request.apiOrders.all}?active=${active}`, this.request.httpJSONOptions)
+    return this.http.get<ModelOrder>(`${this.request.apiOrders.all}?active=${active}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -34,7 +34,7 @@ export class OrderApiService {
   }
 
   getCartUserOrder(user_id, cart_id, stateOrder): Observable<ModelOrder> {
-    return this.http.get<ModelOrder>(`${this.request.apiOrders.all}?userId=${user_id}&cartId=${cart_id}&status=${stateOrder}`, this.request.httpJSONOptions)
+    return this.http.get<ModelOrder>(`${this.request.apiOrders.all}?userId=${user_id}&cartId=${cart_id}&status=${stateOrder}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -58,7 +58,7 @@ export class OrderApiService {
   }
 
   createOrder(model): Observable<ModelOrder> {
-    return this.http.post<ModelOrder>(this.request.apiOrders.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelOrder>(this.request.apiOrders.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -66,7 +66,7 @@ export class OrderApiService {
   }
 
   updateOrder(model): Observable<ModelOrder> {
-    return this.http.put<ModelOrder>(this.request.apiOrders.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelOrder>(this.request.apiOrders.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -74,8 +74,8 @@ export class OrderApiService {
   }
 
   deleteOrder(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelOrder>(this.request.apiOrders.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelOrder>(this.request.apiOrders.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

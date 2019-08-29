@@ -18,7 +18,7 @@ export class TransactionApiService {
   }
 
   getTransactions(query = ''): Observable<ModelTransaction> {
-    return this.http.get<ModelTransaction>(`${this.request.apiTransactions.all}${query}`, this.request.httpJSONOptions)
+    return this.http.get<ModelTransaction>(`${this.request.apiTransactions.all}${query}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -26,7 +26,7 @@ export class TransactionApiService {
   }
 
   getTransaction(id): Observable<ModelTransaction> {
-    return this.http.get<ModelTransaction>(`${this.request.apiTransactions.all}?id=${id}`, this.request.httpJSONOptions)
+    return this.http.get<ModelTransaction>(`${this.request.apiTransactions.all}?id=${id}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -34,7 +34,7 @@ export class TransactionApiService {
   }
 
   createTransaction(model): Observable<ModelTransaction> {
-    return this.http.post<ModelTransaction>(this.request.apiTransactions.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelTransaction>(this.request.apiTransactions.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class TransactionApiService {
   }
 
   updateTransaction(model): Observable<ModelTransaction> {
-    return this.http.put<ModelTransaction>(this.request.apiTransactions.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelTransaction>(this.request.apiTransactions.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class TransactionApiService {
   }
 
   deleteTransaction(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelTransaction>(this.request.apiTransactions.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelTransaction>(this.request.apiTransactions.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

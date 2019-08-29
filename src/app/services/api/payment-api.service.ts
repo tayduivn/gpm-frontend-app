@@ -18,7 +18,7 @@ export class PaymentApiService {
   }
 
   getPayments(): Observable<ModelPayment> {
-    return this.http.get<ModelPayment>(`${this.request.apiPayments.all}`, this.request.httpJSONOptions)
+    return this.http.get<ModelPayment>(`${this.request.apiPayments.all}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -26,7 +26,7 @@ export class PaymentApiService {
   }
 
   getPayment(query): Observable<ModelPayment> {
-    return this.http.get<ModelPayment>(`${this.request.apiPayments.all}${query}`, this.request.httpJSONOptions)
+    return this.http.get<ModelPayment>(`${this.request.apiPayments.all}${query}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -34,7 +34,7 @@ export class PaymentApiService {
   }
 
   createPaymentPaypal(model): Observable<ModelPayment> {
-    return this.http.post<ModelPayment>(this.request.apiPayments.paypal, model, this.request.httpJSONOptions)
+    return this.http.post<ModelPayment>(this.request.apiPayments.paypal, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class PaymentApiService {
   }
 
   updatePayment(model): Observable<ModelPayment> {
-    return this.http.put<ModelPayment>(this.request.apiPayments.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelPayment>(this.request.apiPayments.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class PaymentApiService {
   }
 
   deletePayment(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelPayment>(this.request.apiPayments.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelPayment>(this.request.apiPayments.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

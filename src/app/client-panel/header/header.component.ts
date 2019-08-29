@@ -79,7 +79,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.firebaseAuthService.logout().then(() => {
-      localStorage.setItem('user', '');
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
       this.router.navigate(['/index/login']);
     });
   }

@@ -24,7 +24,7 @@ export class UserApiService {
    * ?type={type}
    */
   getUsers(query = ''): Observable<ModelUser> {
-    return this.http.get<ModelUser>(`${this.request.apiUsers.all}${query}`, this.request.httpJSONOptions)
+    return this.http.get<ModelUser>(`${this.request.apiUsers.all}${query}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -32,7 +32,7 @@ export class UserApiService {
   }
 
   getUser(id): Observable<ModelUser> {
-    return this.http.get<ModelUser>(`${this.request.apiUsers.all}?id=${id}`, this.request.httpJSONOptions)
+    return this.http.get<ModelUser>(`${this.request.apiUsers.all}?id=${id}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -40,7 +40,7 @@ export class UserApiService {
   }
 
   getUserEmail(email): Observable<ModelUser> {
-    return this.http.get<ModelUser>(`${this.request.apiUsers.email}?email=${email}`, this.request.httpJSONOptions)
+    return this.http.get<ModelUser>(`${this.request.apiUsers.email}?email=${email}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -49,7 +49,7 @@ export class UserApiService {
 
   /* Implement Firebase */
   loginUser(model): Observable<ModelUser> {
-    return this.http.post<ModelUser>(this.request.apiUsers.login, model, this.request.httpJSONOptions)
+    return this.http.post<ModelUser>(this.request.apiUsers.login, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -57,7 +57,7 @@ export class UserApiService {
   }
 
   forgotUser(model): Observable<ModelUser> {
-    return this.http.post<ModelUser>(this.request.apiUsers.forgot, model, this.request.httpJSONOptions)
+    return this.http.post<ModelUser>(this.request.apiUsers.forgot, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -65,7 +65,7 @@ export class UserApiService {
   }
 
   passwordUser(model): Observable<ModelUser> {
-    return this.http.put<ModelUser>(this.request.apiUsers.password, model, this.request.httpJSONOptions)
+    return this.http.put<ModelUser>(this.request.apiUsers.password, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -73,7 +73,7 @@ export class UserApiService {
   }
 
   bankUser(model): Observable<ModelUser> {
-    return this.http.put<ModelUser>(this.request.apiUsers.bank, model, this.request.httpJSONOptions)
+    return this.http.put<ModelUser>(this.request.apiUsers.bank, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -81,7 +81,7 @@ export class UserApiService {
   }
 
   createUser(model): Observable<ModelUser> {
-    return this.http.post<ModelUser>(this.request.apiUsers.register, model, this.request.httpJSONOptions)
+    return this.http.post<ModelUser>(this.request.apiUsers.register, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -89,7 +89,7 @@ export class UserApiService {
   }
 
   updateUser(model): Observable<ModelUser> {
-    return this.http.put<ModelUser>(this.request.apiUsers.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelUser>(this.request.apiUsers.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -97,7 +97,7 @@ export class UserApiService {
   }
 
   updateUserPhoto(model): Observable<ModelUser>  {
-    return this.http.post<ModelUser>(this.request.apiUsers.photo, model, this.request.httpFormOptions)
+    return this.http.post<ModelUser>(this.request.apiUsers.photo, model, this.request.httpFormOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -105,8 +105,8 @@ export class UserApiService {
   }
 
   deleteUser(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelUser>(this.request.apiUsers.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelUser>(this.request.apiUsers.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

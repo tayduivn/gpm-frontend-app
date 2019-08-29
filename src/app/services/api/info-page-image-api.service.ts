@@ -18,7 +18,7 @@ export class InfoPageImageApiService {
   }
 
   createImage(model): Observable<ModelInfoImage> {
-    return this.http.post<ModelInfoImage>(this.request.apiInfoImages.register, model, this.request.httpFormOptions)
+    return this.http.post<ModelInfoImage>(this.request.apiInfoImages.register, model, this.request.httpFormOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -26,7 +26,7 @@ export class InfoPageImageApiService {
   }
 
   updateImage(model): Observable<ModelInfoImage> {
-    return this.http.post<ModelInfoImage>(this.request.apiInfoImages.update, model, this.request.httpFormOptions)
+    return this.http.post<ModelInfoImage>(this.request.apiInfoImages.update, model, this.request.httpFormOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -34,8 +34,8 @@ export class InfoPageImageApiService {
   }
 
   deleteImage(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelInfoImage>(this.request.apiInfoImages.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelInfoImage>(this.request.apiInfoImages.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

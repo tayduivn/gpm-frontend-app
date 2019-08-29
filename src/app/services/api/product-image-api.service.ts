@@ -42,7 +42,7 @@ export class ProductImageApiService {
   }
 
   createImage(model): Observable<ModelImage> {
-    return this.http.post<ModelImage>(this.request.apiImages.register, model, this.request.httpFormOptions)
+    return this.http.post<ModelImage>(this.request.apiImages.register, model, this.request.httpFormOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,7 +50,7 @@ export class ProductImageApiService {
   }
 
   updateImage(model): Observable<ModelImage> {
-    return this.http.post<ModelImage>(this.request.apiImages.update, model, this.request.httpFormOptions)
+    return this.http.post<ModelImage>(this.request.apiImages.update, model, this.request.httpFormOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -58,8 +58,8 @@ export class ProductImageApiService {
   }
 
   deleteImage(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelImage>(this.request.apiImages.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelImage>(this.request.apiImages.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

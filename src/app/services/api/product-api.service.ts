@@ -26,7 +26,7 @@ export class ProductApiService {
    * ?id=${id}&category=true&limit=15&order=RAND
    */
   getProducts(query = ''): Observable<ModelProduct> {
-    return this.http.get<ModelProduct>(`${this.request.apiProducts.allPublic}${query}`, this.request.httpJSONOptions)
+    return this.http.get<ModelProduct>(`${this.request.apiProducts.allPublic}${query}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -38,7 +38,7 @@ export class ProductApiService {
    * ?categoryName=${name}&tagName=${name}&orderBy={12}&Quantity{1-100}&rangeDate{04-29-2019|03-28-2019}&order=RAND&limit=12&page=${1}
    */
   getFilterProducts(query = ''): Observable<ModelProduct> {
-    return this.http.get<ModelProduct>(`${this.request.apiProducts.allFilterPublic}${query}`, this.request.httpJSONOptions)
+    return this.http.get<ModelProduct>(`${this.request.apiProducts.allFilterPublic}${query}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -46,7 +46,7 @@ export class ProductApiService {
   }
 
   getProduct(id): Observable<ModelProduct> {
-    return this.http.get<ModelProduct>(`${this.request.apiProducts.allPublic}?id=${id}`, this.request.httpJSONOptions)
+    return this.http.get<ModelProduct>(`${this.request.apiProducts.allPublic}?id=${id}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -54,7 +54,7 @@ export class ProductApiService {
   }
 
   createProduct(model): Observable<ModelProduct> {
-    return this.http.post<ModelProduct>(this.request.apiProducts.all, model, this.request.httpFormOptions)
+    return this.http.post<ModelProduct>(this.request.apiProducts.all, model, this.request.httpFormOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -62,7 +62,7 @@ export class ProductApiService {
   }
 
   updateProduct(model): Observable<ModelProduct> {
-    return this.http.post<ModelProduct>(this.request.apiProducts.allUpdate, model, this.request.httpFormOptions)
+    return this.http.post<ModelProduct>(this.request.apiProducts.allUpdate, model, this.request.httpFormOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -70,8 +70,8 @@ export class ProductApiService {
   }
 
   deleteProduct(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelProduct>(this.request.apiProducts.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelProduct>(this.request.apiProducts.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

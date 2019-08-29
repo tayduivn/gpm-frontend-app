@@ -34,7 +34,7 @@ export class CategoryApiService {
   }
 
   createCategory(model): Observable<ModelCategory> {
-    return this.http.post<ModelCategory>(this.request.apiCategories.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelCategory>(this.request.apiCategories.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class CategoryApiService {
   }
 
   updateCategory(model): Observable<ModelCategory> {
-    return this.http.put<ModelCategory>(this.request.apiCategories.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelCategory>(this.request.apiCategories.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class CategoryApiService {
   }
 
   deleteCategory(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelCategory>(this.request.apiCategories.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelCategory>(this.request.apiCategories.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

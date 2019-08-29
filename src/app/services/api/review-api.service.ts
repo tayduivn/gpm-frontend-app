@@ -34,7 +34,7 @@ export class ReviewApiService {
   }
 
   createReview(model): Observable<ModelReview> {
-    return this.http.post<ModelReview>(this.request.apiReviews.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelReview>(this.request.apiReviews.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class ReviewApiService {
   }
 
   updateReview(model): Observable<ModelReview> {
-    return this.http.put<ModelReview>(this.request.apiReviews.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelReview>(this.request.apiReviews.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class ReviewApiService {
   }
 
   deleteReview(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelReview>(this.request.apiReviews.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelReview>(this.request.apiReviews.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

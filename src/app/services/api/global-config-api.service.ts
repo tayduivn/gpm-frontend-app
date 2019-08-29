@@ -34,7 +34,7 @@ export class GlobalConfigApiService {
   }
 
   createGlobalConfig(model): Observable<ModelGlobalConfig> {
-    return this.http.post<ModelGlobalConfig>(this.request.apiGlobalConfig.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelGlobalConfig>(this.request.apiGlobalConfig.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class GlobalConfigApiService {
   }
 
   updateGlobalConfig(model): Observable<ModelGlobalConfig> {
-    return this.http.put<ModelGlobalConfig>(this.request.apiGlobalConfig.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelGlobalConfig>(this.request.apiGlobalConfig.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class GlobalConfigApiService {
   }
 
   deleteGlobalConfig(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelGlobalConfig>(this.request.apiGlobalConfig.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelGlobalConfig>(this.request.apiGlobalConfig.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

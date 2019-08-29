@@ -18,7 +18,7 @@ export class ProductTagApiService {
   }
 
   getProductTags(query = ''): Observable<ModelProductTag> {
-    return this.http.get<ModelProductTag>(`${this.request.apiProductsTags.all}${query}`, this.request.httpJSONOptions)
+    return this.http.get<ModelProductTag>(`${this.request.apiProductsTags.all}${query}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -26,7 +26,7 @@ export class ProductTagApiService {
   }
 
   getProductTag(id): Observable<ModelProductTag> {
-    return this.http.get<ModelProductTag>(`${this.request.apiProductsTags.all}?id=${id}`, this.request.httpJSONOptions)
+    return this.http.get<ModelProductTag>(`${this.request.apiProductsTags.all}?id=${id}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -35,7 +35,7 @@ export class ProductTagApiService {
 
   createProductTag(model): Observable<ModelProductTag> {
     console.log(model);
-    return this.http.post<ModelProductTag>(this.request.apiProductsTags.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelProductTag>(this.request.apiProductsTags.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -43,7 +43,7 @@ export class ProductTagApiService {
   }
 
   updateProductTag(model): Observable<ModelProductTag> {
-    return this.http.put<ModelProductTag>(this.request.apiProductsTags.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelProductTag>(this.request.apiProductsTags.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -51,8 +51,8 @@ export class ProductTagApiService {
   }
 
   deleteProductTag(model) {
-    this.request.httpJSONOptions.body = model;
-    return this.http.delete<ModelProductTag>(this.request.apiProductsTags.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = model;
+    return this.http.delete<ModelProductTag>(this.request.apiProductsTags.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

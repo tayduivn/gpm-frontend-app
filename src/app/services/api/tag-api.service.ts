@@ -34,7 +34,7 @@ export class TagApiService {
   }
 
   createTag(model): Observable<ModelTag> {
-    return this.http.post<ModelTag>(this.request.apiTags.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelTag>(this.request.apiTags.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class TagApiService {
   }
 
   updateTag(model): Observable<ModelTag> {
-    return this.http.put<ModelTag>(this.request.apiTags.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelTag>(this.request.apiTags.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class TagApiService {
   }
 
   deleteTag(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelTag>(this.request.apiTags.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelTag>(this.request.apiTags.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

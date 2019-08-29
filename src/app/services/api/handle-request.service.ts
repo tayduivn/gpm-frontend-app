@@ -8,26 +8,11 @@ interface HttpOptions {
   body?: {};
 }
 
-const token = `Bearer ${localStorage.getItem('token')}`;
-console.log(localStorage.getItem('token'));
-
 @Injectable({
   providedIn: 'root'
 })
 export class HandleRequestService {
 
-  public httpJSONOptions: HttpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': token ? token : '',
-    })
-  };
-
-  public httpFormOptions: HttpOptions = {
-    headers: new HttpHeaders({
-      'Authorization': token ? token : '',
-    })
-  };
   public apiUsers = {
     login: `${config.api_url}/api/public/users/login`,
     email: `${config.api_url}/api/public/users/email`,
@@ -107,6 +92,23 @@ export class HandleRequestService {
     update: `${config.api_url}/api/info/images/update`,
     allPublic: `${config.api_url}/api/public/info/images`,
   };
+
+  public httpFormOptions(token = `Bearer ${localStorage.getItem('token')}`): HttpOptions {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': token ? token : '',
+      })
+    };
+  }
+
+  public httpJSONOptions(token = `Bearer ${localStorage.getItem('token')}`): HttpOptions {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': token ? token : '',
+      })
+    };
+  }
 
   // Error handling
   public handleError(error) {

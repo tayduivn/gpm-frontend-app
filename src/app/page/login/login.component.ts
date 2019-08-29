@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(localStorage.getItem('token'));
     const email = localStorage.getItem('email-client-login') ? localStorage.getItem('email-client-login') : '';
     const login = localStorage.getItem('pass-client-login') ? localStorage.getItem('pass-client-login') : '';
     this.form = this.fb.group({

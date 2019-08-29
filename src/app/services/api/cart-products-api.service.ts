@@ -18,7 +18,7 @@ export class CartProductsApiService {
   }
 
   getCartProducts(): Observable<ModelCartProduct> {
-    return this.http.get<ModelCartProduct>(`${this.request.apiCartsProducts.all}?showByUser=true`, this.request.httpJSONOptions)
+    return this.http.get<ModelCartProduct>(`${this.request.apiCartsProducts.all}?showByUser=true`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -26,7 +26,7 @@ export class CartProductsApiService {
   }
 
   getCartProductId(id): Observable<ModelCartProduct> {
-    return this.http.get<ModelCartProduct>(`${this.request.apiCartsProducts.all}?userId=${id}`, this.request.httpJSONOptions)
+    return this.http.get<ModelCartProduct>(`${this.request.apiCartsProducts.all}?userId=${id}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -34,7 +34,7 @@ export class CartProductsApiService {
   }
 
   createProduct(model): Observable<ModelCartProduct> {
-    return this.http.post<ModelCartProduct>(this.request.apiCartsProducts.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelCartProduct>(this.request.apiCartsProducts.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class CartProductsApiService {
   }
 
   updateProduct(model): Observable<ModelCartProduct> {
-    return this.http.put<ModelCartProduct>(this.request.apiCartsProducts.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelCartProduct>(this.request.apiCartsProducts.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class CartProductsApiService {
   }
 
   deleteProduct(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelCartProduct>(this.request.apiCartsProducts.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelCartProduct>(this.request.apiCartsProducts.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

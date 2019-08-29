@@ -34,7 +34,7 @@ export class RoleApiService {
   }
 
   createRole(model): Observable<ModelRoles> {
-    return this.http.post<ModelRoles>(this.request.apiRoles.all, model, this.request.httpJSONOptions)
+    return this.http.post<ModelRoles>(this.request.apiRoles.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -42,7 +42,7 @@ export class RoleApiService {
   }
 
   updateRole(model): Observable<ModelRoles> {
-    return this.http.put<ModelRoles>(this.request.apiRoles.all, model, this.request.httpJSONOptions)
+    return this.http.put<ModelRoles>(this.request.apiRoles.all, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -50,8 +50,8 @@ export class RoleApiService {
   }
 
   deleteRole(id) {
-    this.request.httpJSONOptions.body = {id};
-    return this.http.delete<ModelRoles>(this.request.apiRoles.all, this.request.httpJSONOptions)
+    this.request.httpJSONOptions().body = {id};
+    return this.http.delete<ModelRoles>(this.request.apiRoles.all, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)

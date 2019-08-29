@@ -18,7 +18,7 @@ export class SingUpEmailApiService {
   }
 
   getEmails(): Observable<ModelSingUpEmail> {
-    return this.http.get<ModelSingUpEmail>(`${this.request.apiEmails.all}`, this.request.httpJSONOptions)
+    return this.http.get<ModelSingUpEmail>(`${this.request.apiEmails.all}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -26,7 +26,7 @@ export class SingUpEmailApiService {
   }
 
   getEmail(id): Observable<ModelSingUpEmail> {
-    return this.http.get<ModelSingUpEmail>(`${this.request.apiEmails.all}?id=${id}`, this.request.httpJSONOptions)
+    return this.http.get<ModelSingUpEmail>(`${this.request.apiEmails.all}?id=${id}`, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
@@ -34,7 +34,7 @@ export class SingUpEmailApiService {
   }
 
   createEmail(model): Observable<ModelSingUpEmail> {
-    return this.http.post<ModelSingUpEmail>(this.request.apiEmails.allPublic, model, this.request.httpJSONOptions)
+    return this.http.post<ModelSingUpEmail>(this.request.apiEmails.allPublic, model, this.request.httpJSONOptions())
       .pipe(
         retry(1),
         catchError(this.request.handleError)
