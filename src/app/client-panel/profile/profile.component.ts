@@ -22,10 +22,13 @@ export class ProfileComponent implements OnInit {
   public hidePass = true;
   public hidePassNew = true;
   public user: ModelUser;
+  public listMenu = ['Information of Profile', 'Banks', 'Settings'];
   public message = 'Loading...';
   public location: any = {address: ''};
   private formData = new FormData();
   private fileToUpload: any;
+  public selected = 'Information of Profile';
+  public isLoad = false;
 
   constructor(
     private fb: FormBuilder,
@@ -195,18 +198,22 @@ export class ProfileComponent implements OnInit {
   /* Image */
   public uploadImage(event) {
     this.fileToUpload = event.target.files;
+    console.log(event);
     this.formData.delete('image');
     if (this.fileToUpload.length) {
       for (const image of this.fileToUpload) {
         this.formData.append('image', image, image.name);
       }
     }
+    this.requestUploadImage();
   }
 
-  upload() {
+  private requestUploadImage() {
     this.formDataSend();
+    this.isLoad = true;
     this.userApiService.updateUserPhoto(this.formData)
       .subscribe(() => {
+        this.isLoad = false;
         this.snackBar.open('success', 'ok', {duration: 2000});
         this.getUsers();
       });

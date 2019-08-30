@@ -13,6 +13,7 @@ import {ChatsComponent} from './chats/chats.component';
 import {ProductDetailComponent} from './product-detail/product-detail.component';
 import {MyProductsComponent} from './my-products/my-products.component';
 import {MainComponent} from './main/main.component';
+import {ContactComponent} from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -110,6 +111,14 @@ const routes: Routes = [
       {
         path: 'trending',
         component: TrendingComponent,
+        canActivate: [AuthClientService],
+        data: {
+          expectedRole: ['client']
+        },
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
         canActivate: [AuthClientService],
         data: {
           expectedRole: ['client']

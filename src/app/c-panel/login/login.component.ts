@@ -70,12 +70,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         .catch((err) => {
           console.log(err);
           this.isLoad = false;
-          this.snackBar.open('Ocurrió error', 'ok', {duration: 2000});
+          this.snackBar.open('Ocurrió error', 'ok', {duration: 10000});
         });
     }, (err) => {
       console.log(err);
       this.isLoad = false;
-      this.snackBar.open('Ocurrió error', 'ok', {duration: 2000});
+      this.snackBar.open('Ocurrió error', 'ok', {duration: 10000});
     });
   }
 

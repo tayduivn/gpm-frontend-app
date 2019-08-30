@@ -30,6 +30,8 @@ import {MyProductsComponent} from './my-products/my-products.component';
 import {MainComponent} from './main/main.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
+import {ContactComponent} from './contact/contact.component';
+import {NgxLoadingModule} from 'ngx-loading';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import {FooterComponent} from './footer/footer.component';
     MainComponent,
     HeaderComponent,
     FooterComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
@@ -63,7 +66,8 @@ import {FooterComponent} from './footer/footer.component';
     MatCheckboxModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxLoadingModule.forRoot({}),
   ]
 })
 export class ClientPanelModule {

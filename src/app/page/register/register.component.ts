@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   public isLoad = false;
   public roles: any;
   public hide = false;
+  private _duration = 10000;
 
   constructor(
     public snackBar: MatSnackBar,
@@ -52,7 +53,7 @@ export class RegisterComponent implements OnInit {
       })
       .catch(() => {
         this.isLoad = false;
-        this.snackBar.open('Error', 'ok', {duration: 2000});
+        this.snackBar.open('Error', 'ok', {duration: this._duration});
       });
   }
 
@@ -64,7 +65,7 @@ export class RegisterComponent implements OnInit {
       })
       .catch(() => {
         this.isLoad = false;
-        this.snackBar.open('Error', 'ok', {duration: 2000});
+        this.snackBar.open('Error', 'ok', {duration: this._duration});
       });
   }
 
@@ -79,7 +80,7 @@ export class RegisterComponent implements OnInit {
     this.userApiService.getUserEmail(user.email).subscribe((resUser: any) => {
       if (resUser.data.user) {
         this.isLoad = false;
-        this.snackBar.open('Usuario ya existente, por favor haz login', 'ok', {duration: 2000});
+        this.snackBar.open('Usuario ya existente, por favor haz login', 'ok', {duration: this._duration});
         this.firebaseAuthService.logout().then(() => console.log('logout'));
       } else {
         this.createUser(user);
@@ -99,10 +100,13 @@ export class RegisterComponent implements OnInit {
         this.createUser(user);
       })
       .catch((err) => {
-        this.isLoad = false;
         console.log(err);
         this.isLoad = false;
-        this.snackBar.open('Error creando usuario', 'ok', {duration: 2000});
+        if (err.message === 'The email address is already in use by another account.') {
+          this.snackBar.open('The email address is already in use by another account.', 'ok', {duration: this._duration});
+        } else {
+          this.snackBar.open('Error creando usuario', 'ok', {duration: this._duration});
+        }
       });
   }
 
@@ -112,19 +116,22 @@ export class RegisterComponent implements OnInit {
       .then((resID) => {
         user.firebase_id = resID;
         this.userApiService.createUser(user).subscribe(() => {
-          this.router.navigate(['/index/login']);
+          this.snackBar.open('Usuario creado con éxito', 'ok', {duration: this._duration}).afterDismissed()
+            .subscribe(() => {
+              this.router.navigate(['/index/login']);
+            });
         }, (err) => {
           this.isLoad = false;
           console.log(err);
           this.isLoad = false;
-          this.snackBar.open('Error creando usuario', 'ok', {duration: 2000});
+          this.snackBar.open('Error creando usuario', 'ok', {duration: this._duration});
         });
       })
       .catch((err) => {
         this.isLoad = false;
         console.log(err);
         this.isLoad = false;
-        this.snackBar.open('Error creando usuario', 'ok', {duration: 2000});
+        this.snackBar.open('Error creando usuario', 'ok', {duration: this._duration});
       });
   }
 

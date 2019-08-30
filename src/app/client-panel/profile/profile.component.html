@@ -1,155 +1,162 @@
 <div class="profile">
   <div *ngIf="user; else noData">
-    <h3>Information of the profile</h3>
-    <div class="row">
-      <form [formGroup]="form" class="col-md-8 col-12">
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" formControlName="email" type="email">
-            <mat-error>{{getError('email')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Phone</mat-label>
-            <input matInput placeholder="Phone" formControlName="phone" type="text">
-            <mat-error>{{getError('phone')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Nombre" formControlName="first_name" type="text">
-            <mat-error>{{getError('first_name')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Apellido</mat-label>
-            <input matInput placeholder="Apellido" formControlName="last_name" type="text">
-            <mat-error>{{getError('last_name')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="map-payment">
-          <div class="d-flex align-items-center mb-4">
-            <h6>Search</h6>
-            <div id='geocoder' class='geocoder ml-3'></div>
-          </div>
-          <div id='map'></div>
-          <h6>Location: {{this.location?.address}}</h6>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Address</mat-label>
-            <input matInput placeholder="Dirección" formControlName="address" type="text">
-            <mat-error>{{getError('address')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>City</mat-label>
-            <input matInput placeholder="Ciudad" formControlName="city" type="text">
-            <mat-error>{{getError('city')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>State</mat-label>
-            <input matInput placeholder="Estado" formControlName="state" type="text">
-            <mat-error>{{getError('state')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Country</mat-label>
-            <input matInput placeholder="País" formControlName="country" type="text">
-            <mat-error>{{getError('country')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="form-group">
-          <mat-form-field>
-            <mat-label>Postal Code</mat-label>
-            <input matInput placeholder="Código Postal" formControlName="postal_code" type="text">
-            <mat-error>{{getError('postal_code')}}</mat-error>
-          </mat-form-field>
-        </div>
-        <div class="text-right">
-          <button mat-raised-button color="primary" type="submit" class="btn-sm btn-primary" (click)="send()">
-            Save
-          </button>
-        </div>
-      </form>
-      <form [formGroup]="form" class="col-md-4 col-12 pl-5">
-        <div class="d-flex justify-content-center align-items-center">
-          <img [src]="getPhotoProfile()" alt="photo profile">
-        </div>
-        <div class="form-group">
-          <label>Photo</label>
-          <input type="file" class="form-control" accept="image/*" (change)="uploadImage($event)">
-          <p class="m-0 p-0 text-left">
-            <small>Upload image: minimum 200 x 200 pixels</small>
-          </p>
-        </div>
-        <div class="text-right">
-          <button mat-raised-button color="primary" type="submit" class="btn-sm btn-primary" (click)="upload()">
-            Upload
-          </button>
-        </div>
-      </form>
+    <div class="menu-navigation mb-4">
+      <div>
+        <button *ngFor="let item of listMenu" [ngClass]="{active: (selected === item)}" (click)="this.selected = item">
+          {{ item }}
+        </button>
+      </div>
     </div>
-    <hr class="mt-5 mb-5">
-    <h3>Information of bank</h3>
-    <form [formGroup]="formBank">
-      <div class="form-group">
-        <mat-form-field>
-          <mat-label>Paypal Email</mat-label>
-          <input matInput placeholder="Paypal Email" formControlName="email_paypal" type="text">
-          <mat-error>{{getErrorBank('email_paypal')}}</mat-error>
-        </mat-form-field>
+    <div *ngIf="selected === 'Information of Profile'">
+      <div class="row p-4 content-information">
+        <form [formGroup]="form" class="p-0 pl-2 pr-2 d-flex align-items-center flex-column">
+          <div class="content-profile-image d-flex justify-content-center align-items-center">
+            <img [src]="getPhotoProfile()" alt="photo profile">
+            <label for="image-profile"><i class="fas fa-camera"></i></label>
+            <input type="file" id="image-profile" class="form-control" accept="image/*" (change)="uploadImage($event)">
+            <div class="overlay"></div>
+          </div>
+        </form>
+        <form [formGroup]="form" class="col-md-8 col-12">
+          <h4>Information of the profile</h4>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" formControlName="email" type="email">
+              <mat-error>{{getError('email')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Phone</mat-label>
+              <input matInput placeholder="Phone" formControlName="phone" type="text">
+              <mat-error>{{getError('phone')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput placeholder="Nombre" formControlName="first_name" type="text">
+              <mat-error>{{getError('first_name')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Apellido</mat-label>
+              <input matInput placeholder="Apellido" formControlName="last_name" type="text">
+              <mat-error>{{getError('last_name')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="map-payment">
+            <div class="d-flex align-items-center mb-4">
+              <h6>Search</h6>
+              <div id='geocoder' class='geocoder ml-3'></div>
+            </div>
+            <div id='map'></div>
+            <h6>Location: {{this.location?.address}}</h6>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Dirección" formControlName="address" type="text">
+              <mat-error>{{getError('address')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>City</mat-label>
+              <input matInput placeholder="Ciudad" formControlName="city" type="text">
+              <mat-error>{{getError('city')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>State</mat-label>
+              <input matInput placeholder="Estado" formControlName="state" type="text">
+              <mat-error>{{getError('state')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Country</mat-label>
+              <input matInput placeholder="País" formControlName="country" type="text">
+              <mat-error>{{getError('country')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Postal Code</mat-label>
+              <input matInput placeholder="Código Postal" formControlName="postal_code" type="text">
+              <mat-error>{{getError('postal_code')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="text-right">
+            <button type="submit" class="btn" (click)="send()">
+              Save
+            </button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <button mat-raised-button color="primary">Connect with Stripe</button>
+    </div>
+    <div *ngIf="selected === 'Banks'">
+      <div class="p-4 content-information">
+        <h4>Information of bank</h4>
+        <form [formGroup]="formBank">
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Paypal Email</mat-label>
+              <input matInput placeholder="Paypal Email" formControlName="email_paypal" type="text">
+              <mat-error>{{getErrorBank('email_paypal')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <button mat-raised-button color="primary">Connect with Stripe</button>
+          </div>
+          <div class="text-right">
+            <button type="submit" class="btn" (click)="sendBank()">
+              Save
+            </button>
+          </div>
+        </form>
       </div>
-      <div class="text-right">
-        <button type="submit" mat-raised-button color="primary" class="btn-sm btn-primary" (click)="sendBank()">
-          Save
-        </button>
+    </div>
+    <div *ngIf="selected === 'Settings'">
+      <div class="p-4 content-information">
+        <h4>Password</h4>
+        <form [formGroup]="formPass">
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>Actual Password</mat-label>
+              <input matInput placeholder="Actual Password" formControlName="password" type="password"
+                     [type]="hidePass ? 'password' : 'text'">
+              <mat-icon matSuffix
+                        (click)="hidePass = !hidePass">{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error>{{getErrorPass('password')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>New Password</mat-label>
+              <input matInput placeholder="New Password" formControlName="newPassword" type="password"
+                     [type]="hidePassNew ? 'password' : 'text'">
+              <mat-icon matSuffix
+                        (click)="hidePassNew = !hidePassNew">{{hidePassNew ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error>{{getErrorPass('newPassword')}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="text-right">
+            <button type="submit" class="btn" (click)="sendPass()">
+              Save
+            </button>
+          </div>
+        </form>
+        <hr class="mt-5 mb-5">
+        <div class="text-center">
+          <button type="submit" class="btn delete-button" (click)="deleteData()">
+            Delete account
+          </button>
+        </div>
       </div>
-    </form>
-    <hr class="mt-5 mb-5">
-    <h3>Password</h3>
-    <form [formGroup]="formPass">
-      <div class="form-group">
-        <mat-form-field>
-          <mat-label>Actual Password</mat-label>
-          <input matInput placeholder="Actual Password" formControlName="password" type="password"
-                 [type]="hidePass ? 'password' : 'text'">
-          <mat-icon matSuffix (click)="hidePass = !hidePass">{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-error>{{getErrorPass('password')}}</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="form-group">
-        <mat-form-field>
-          <mat-label>New Password</mat-label>
-          <input matInput placeholder="New Password" formControlName="newPassword" type="password"
-                 [type]="hidePassNew ? 'password' : 'text'">
-          <mat-icon matSuffix
-                    (click)="hidePassNew = !hidePassNew">{{hidePassNew ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-error>{{getErrorPass('newPassword')}}</mat-error>
-        </mat-form-field>
-      </div>
-      <div class="text-right">
-        <button type="submit" mat-raised-button color="primary" class="btn-sm btn-primary" (click)="sendPass()">
-          Save
-        </button>
-      </div>
-    </form>
-    <hr class="mt-5 mb-5">
-    <div class="text-right">
-      <button type="submit" mat-raised-button color="warn" class="btn-sm btn-danger" (click)="deleteData()">
-        Delete account
-      </button>
     </div>
   </div>
   <ng-template #noData>
@@ -157,4 +164,5 @@
       <h3>{{message}}</h3>
     </div>
   </ng-template>
+  <ngx-loading [show]="isLoad" [config]="{ backdropBorderRadius: '3px', fullScreenBackdrop: true }"></ngx-loading>
 </div>

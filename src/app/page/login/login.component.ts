@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         this.setUser(res);
       })
       .catch(() => {
-        this.snackBar.open('Error', 'ok', {duration: 2000});
+        this.snackBar.open('Error', 'ok', {duration: 10000});
       });
   }
 
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.setUser(res);
       })
       .catch(() => {
-        this.snackBar.open('Error', 'ok', {duration: 2000});
+        this.snackBar.open('Error', 'ok', {duration: 10000});
       });
   }
 
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
       } else {
         this.isLoad = false;
         this.firebaseAuthService.logout().then(() => console.log('logout'));
-        this.snackBar.open('Usuario no existente, por favor registrarse', 'ok', {duration: 2000});
+        this.snackBar.open('Usuario no existente, por favor registrarse', 'ok', {duration: 10000});
       }
     });
   }
@@ -105,11 +105,11 @@ export class LoginComponent implements OnInit {
         })
         .catch(() => {
           this.isLoad = false;
-          this.snackBar.open('Ocurrió un error', 'ok', {duration: 2000});
+          this.snackBar.open('Ocurrió un error', 'ok', {duration: 10000});
         });
     }, () => {
       this.isLoad = false;
-      this.snackBar.open('Ocurrió un error', 'ok', {duration: 2000});
+      this.snackBar.open('Ocurrió un error', 'ok', {duration: 10000});
     });
   }
 

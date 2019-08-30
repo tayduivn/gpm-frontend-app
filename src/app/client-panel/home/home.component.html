@@ -1,14 +1,6 @@
-<div id="c-panel-home">
-  <div class="carousel-custom">
-    <ngx-slick-carousel class="carousel"
-                        #slickModal="slick-carousel"
-                        [config]="slideConfig">
-      <div ngxSlickItem *ngFor="let image of images" class="slide">
-        <img [src]="image.path" alt="home one">
-      </div>
-    </ngx-slick-carousel>
-  </div>
-  <div class="d-flex align-items-center justify-content-center text-center">
-    <h2>Welcome to Global Pulses Market</h2>
+<div id="client-panel-home">
+  <div class="content-info" data-aos="fade-up">
+    <h5>Generamos las mejores oportunidades de negocios</h5>
+    <a class="btn" routerLink="/client/products">Go to Products</a>
   </div>
 </div>

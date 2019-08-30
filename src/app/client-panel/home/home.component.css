@@ -1,12 +1,34 @@
-#c-panel-home {
-  height: 100%;
-}
-
-#c-panel-home .carousel-custom {
+#client-panel-home {
+  background: url("../../../assets/home/client_home_1.jpg") no-repeat;
+  background-size: cover;
+  height: 90vh;
   margin: 0 auto;
-  max-width: 577px;
+  max-width: 1360px;
+  overflow: hidden;
+  position: relative;
 }
 
-#c-panel-home .carousel-custom img {
-  width: 100%;
+#client-panel-home .content-info {
+  bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  margin: auto;
+  padding: 50px;
+  position: absolute;
+  right: 0;
+}
+
+#client-panel-home .content-info h5 {
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+#client-panel-home .btn {
+  align-self: center;
+  border-radius: 40px;
+  font-size: 1.5rem;
+  padding: 10px 20px;
 }

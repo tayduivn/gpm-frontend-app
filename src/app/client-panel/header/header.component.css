@@ -12,16 +12,16 @@
   z-index: 1000;
 }
 
-/*#header-home::after {
-  background: linear-gradient(to right, #9E7CC1, #8ECDEA);
+#header-home::after {
+  background: linear-gradient(to right, #4d81f6, #8ECDEA);
   content: '';
-  height: 3px;
+  height: 2px;
   left: 0;
   position: absolute;
-  top: 80px;
+  top: 70px;
   transition: top ease-in 0.3s;
   width: 100%;
-}*/
+}
 
 header .header-content {
   align-items: center;
@@ -124,7 +124,7 @@ nav a {
 }
 
 .sticky#header-home::after {
-  top: 70px;
+  top: 60px;
 }
 
 .sticky a {
