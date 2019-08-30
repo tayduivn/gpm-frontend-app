@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   public hidePass = true;
   public hidePassNew = true;
   public user: ModelUser;
+  public userLocal = JSON.parse(localStorage.getItem('user'));
   public listMenu = ['Information of Profile', 'Banks', 'Settings'];
   public message = 'Loading...';
   public location: any = {address: ''};
@@ -140,6 +141,7 @@ export class ProfileComponent implements OnInit {
     this.userApiService.updateUser(user).subscribe(() => {
       this.snackBar.open('success', 'ok', {duration: 2000});
       const userProfile = JSON.parse(localStorage.getItem('user'));
+      userProfile.status = 'completed';
       userProfile.email = this.form.value.email;
       userProfile.phone = this.form.value.phone;
       userProfile.first_name = this.form.value.first_name;
@@ -205,10 +207,6 @@ export class ProfileComponent implements OnInit {
         this.formData.append('image', image, image.name);
       }
     }
-    this.requestUploadImage();
-  }
-
-  private requestUploadImage() {
     this.formDataSend();
     this.isLoad = true;
     this.userApiService.updateUserPhoto(this.formData)

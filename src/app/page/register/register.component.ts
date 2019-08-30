@@ -116,10 +116,8 @@ export class RegisterComponent implements OnInit {
       .then((resID) => {
         user.firebase_id = resID;
         this.userApiService.createUser(user).subscribe(() => {
-          this.snackBar.open('Usuario creado con éxito', 'ok', {duration: this._duration}).afterDismissed()
-            .subscribe(() => {
-              this.router.navigate(['/index/login']);
-            });
+          this.snackBar.open('Usuario creado con éxito', 'ok', {duration: this._duration});
+          this.router.navigate(['/index/login']);
         }, (err) => {
           this.isLoad = false;
           console.log(err);

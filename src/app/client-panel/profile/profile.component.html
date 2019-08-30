@@ -7,6 +7,9 @@
         </button>
       </div>
     </div>
+    <div class="message-waiting" *ngIf="userLocal === 'waiting'">
+      <h6>Please complete your information of the profile to continue.</h6>
+    </div>
     <div *ngIf="selected === 'Information of Profile'">
       <div class="row p-4 content-information">
         <form [formGroup]="form" class="p-0 pl-2 pr-2 d-flex align-items-center flex-column">

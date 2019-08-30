@@ -4,7 +4,7 @@
     <nav id="mySidenav" class="index-sidenav">
       <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
       <a routerLink="/client/guide">Guide</a>
-      <a class="dropbtn" *ngIf="status === 'complete'" (click)="dropdownShow(0)">Menu</a>
+      <a class="dropbtn" *ngIf="status === 'completed'" (click)="dropdownShow(0)">Menu</a>
       <div class="dropdown-content menu">
         <a *ngIf="user.role_id === '2' || user.role_id === '4'" routerLink="/client/my-products"
            routerLinkActive="isActive">
