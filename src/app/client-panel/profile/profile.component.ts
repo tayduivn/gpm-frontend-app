@@ -140,20 +140,35 @@ export class ProfileComponent implements OnInit {
     user.role_id = this.user.role_id;
     this.userApiService.updateUser(user).subscribe(() => {
       this.snackBar.open('success', 'ok', {duration: 2000});
-      const userProfile = JSON.parse(localStorage.getItem('user'));
-      userProfile.status = 'completed';
-      userProfile.email = this.form.value.email;
-      userProfile.phone = this.form.value.phone;
-      userProfile.first_name = this.form.value.first_name;
-      userProfile.last_name = this.form.value.last_name;
-      userProfile.address = this.form.value.address;
-      userProfile.city = this.form.value.city;
-      userProfile.state = this.form.value.state;
-      userProfile.country = this.form.value.country;
-      userProfile.postal_code = this.form.value.postal_code;
-      localStorage.setItem('user', JSON.stringify(userProfile));
-      this.getUsers();
+      if (user.status === 'waiting') {
+        this.user.status = 'completed';
+        this.firebaseService.updateUser(user.id, this.user)
+          .then(() => {
+            this.updateUserStorage();
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        this.updateUserStorage();
+      }
     });
+  }
+
+  private updateUserStorage() {
+    const userProfile = JSON.parse(localStorage.getItem('user'));
+    userProfile.status = 'completed';
+    userProfile.email = this.form.value.email;
+    userProfile.phone = this.form.value.phone;
+    userProfile.first_name = this.form.value.first_name;
+    userProfile.last_name = this.form.value.last_name;
+    userProfile.address = this.form.value.address;
+    userProfile.city = this.form.value.city;
+    userProfile.state = this.form.value.state;
+    userProfile.country = this.form.value.country;
+    userProfile.postal_code = this.form.value.postal_code;
+    localStorage.setItem('user', JSON.stringify(userProfile));
+    this.getUsers();
   }
 
   sendBank() {

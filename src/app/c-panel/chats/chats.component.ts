@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FirebaseService} from '../../services/firebase/firebase.service';
-import {FirebaseAuthService} from '../../services/firebase/firebase-auth.service';
 import {ChatService} from '../../services/chat.service';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-chats',
@@ -20,9 +17,8 @@ export class ChatsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.chatService.getChatMessages()
-      .subscribe((res: any) => {
-        return this.chats = res;
-      });
+    this.chatService.getChatMessages().subscribe((res: any) => {
+      return this.chats = res;
+    });
   }
 }

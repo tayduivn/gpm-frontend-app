@@ -33,7 +33,6 @@ export class ChatsComponent implements OnInit {
   }
 
   createChat() {
-
     const user_two = this.user.firebase_id;
     const user_one = 'ykxmQCzDJk2GMEJTjCph';
 

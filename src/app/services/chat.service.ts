@@ -31,6 +31,7 @@ export class ChatService {
         map(doc => {
           return {id: doc.payload.id, ...doc.payload.data()};
         }),
+        // Return object id, with properties data chat object
         switchMap((c: any) => {
           // Unique User IDs
           chat = c;
@@ -41,10 +42,14 @@ export class ChatService {
             this.afs.doc(`user/${u}`).valueChanges()
           );
 
+          // Return array user information
           return userDocs.length ? combineLatest(userDocs) : of([]);
         }),
         map(arr => {
+          // Set array id users
           arr.forEach(v => (joinKeys[(<any>v).uid] = v));
+
+          // Add user to each message
           chat.messages = chat.messages.map(v => {
             return {...v, user: joinKeys[v.uid]};
           });
@@ -65,8 +70,9 @@ export class ChatService {
       createdAt: Date.now()
     };
 
+    const messages = firestore.FieldValue.arrayUnion(data);
     return this.afs.collection('chats').doc(chatId).update({
-      messages: firestore.FieldValue.arrayUnion(data)
+      messages: messages
     });
   }
 }

@@ -1,6 +1,6 @@
 <ng-container *ngIf="chat">
   <div class="chat">
-    <div *ngIf="chat.second_uid !== user.firebase_id; else headUser" class="top d-flex align-items-center" >
+    <div *ngIf="chat.second_uid !== user.firebase_id; else headUser" class="top d-flex align-items-center">
       <a (click)="this.location.back()" class="btn mr-3">Back</a>
       <img
         [src]="chat.second.photo"
